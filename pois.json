@@ -1,0 +1,3005 @@
+{
+  "data": {
+    "app": {
+      "module": {
+        "id": "Module:a450d7c0-c7b1-4555-a0dc-9655a6f6e4a4",
+        "show_items_images": true,
+        "enable_search": true,
+        "items": [
+          {
+            "id": "Location:006d575e-9321-44f0-88ee-89fa41628232",
+            "name_t": {
+              "de": "Bar Aperol",
+              "en": "Aperol Bar",
+              "fr": "Bar Aperol"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.2854750079388,
+            "longitude": 2.758640678308211,
+            "map_icon": "MapIcon:0f3e66b4-f5ac-42a8-a348-e97dd14a87ad",
+            "image": "https://assets.fragolabs.com/tsJzVpxIoE3EUVG29Nb7vNC08D9D4tkap9JOm4wVtqQ/rs:fit:1000:0:0/plain/upload/9fbc95f1-4d0d-4a05-96a1-456d75bfbf34.jpg@jpg"
+          },
+          {
+            "id": "Location:05c9c547-c376-4e75-afd8-51d3dc63a954",
+            "name_t": {
+              "de": "Festiv'Été",
+              "en": "Festiv'Été",
+              "fr": "Festiv'Été"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.283428192565964,
+            "longitude": 2.761671892602351,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/t1rtJydiBq_8eQSXZKB4reRbLHQPv2fe0sZxYtlsng0/rs:fit:1000:0:0/plain/upload/57524387-7061-4550-9e7e-e7b2b78f9927.jpg@jpg"
+          },
+          {
+            "id": "Location:064d7c63-4a55-4ff8-8cc5-d140d5dfea2f",
+            "name_t": {
+              "de": "Belga Queen",
+              "en": "Belga Queen",
+              "fr": "Belga Queen"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28408127404683,
+            "longitude": 2.760357151612709,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/UVv28TuhGoHGtG-p8_0r_k1EQGTAPpCKs2bhgMR9_-M/rs:fit:1000:0:0/plain/upload/b14782c6-e944-4929-8555-7c07924761d8.jpg@jpg"
+          },
+          {
+            "id": "Location:06a0e17c-0d78-4cba-9911-401177252db1",
+            "name_t": {
+              "de": "Cabane La Fôret",
+              "en": "Cabane La Fôret",
+              "fr": "Cabane La Fôret"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Scènes",
+              "en": "Stages",
+              "fr": "Scènes"
+            },
+            "latitude": 50.28332404485465,
+            "longitude": 2.761844508549501,
+            "map_icon": "MapIcon:e0d82dcb-65a4-4f25-a94b-6cebff5ddb35",
+            "image": "https://assets.fragolabs.com/Z63u9Ja4rR9ysRsVIZCG-SK6Qq0cZuQIJlpEssPbzgg/rs:fit:1000:0:0/plain/upload/38d9d2e8-d84f-4f63-9ade-2c31f70e4a5b.jpg@jpg"
+          },
+          {
+            "id": "Location:075853c1-ff99-44df-8f17-79bd7113039f",
+            "name_t": {
+              "de": "Passage VIP <> PUBLIC",
+              "en": "Passage VIP <> PUBLIC",
+              "fr": "Passage VIP <> PUBLIC"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "VIP",
+              "en": "VIP",
+              "fr": "VIP"
+            },
+            "latitude": 50.282526249426525,
+            "longitude": 2.7613769313007595,
+            "map_icon": "MapIcon:2c370660-0102-47c8-bacb-f0595581c264",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:081da825-d0ef-4d0f-aea3-8669dcb5475e",
+            "name_t": {
+              "de": "Stand Tyrolienne",
+              "en": "Stand Tyrolienne",
+              "fr": "Stand Tyrolienne"
+            },
+            "subtitle_t": {
+              "de": "par la CUA",
+              "en": "par la CUA",
+              "fr": "par la CUA"
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28109376473512,
+            "longitude": 2.7611619269074765,
+            "map_icon": "MapIcon:642d0909-0ff8-4882-ab14-adc0f26e6125",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:093c0b19-a98a-4985-b508-59ed1ba85623",
+            "name_t": {
+              "de": "Toilettes",
+              "en": "Toilettes",
+              "fr": "Toilettes"
+            },
+            "subtitle_t": {
+              "de": "Chapelle",
+              "en": "Chapelle",
+              "fr": "Chapelle"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.283469139122786,
+            "longitude": 2.7590256657912278,
+            "map_icon": "MapIcon:6c284487-7232-40ce-aa56-5d336a74202b",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:0a4da529-394e-42f0-87c2-8b99bfa9853a",
+            "name_t": {
+              "de": "Recharge Mobile - Crédit Mutuel",
+              "en": "Recharge Mobile - Crédit Mutuel",
+              "fr": "Recharge Mobile - Crédit Mutuel"
+            },
+            "subtitle_t": {
+              "de": "Le Square",
+              "en": "Le Square",
+              "fr": "Le Square"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28539429856704,
+            "longitude": 2.7595373334598037,
+            "map_icon": "MapIcon:aadfc779-d8f6-4cf2-a4b7-b4248d93e2c1",
+            "image": "https://assets.fragolabs.com/dBUnuU7hCT-4Qf6VrZ67C0lHTqzfLf112ZWvoMDjIUE/rs:fit:1000:0:0/plain/upload/9e260ec1-d2fe-414a-8240-98dcea9dcfa9.png@jpg"
+          },
+          {
+            "id": "Location:0be609b5-bad4-4332-ad9c-871ea6820ed7",
+            "name_t": {
+              "de": "Casiers",
+              "en": "Casiers",
+              "fr": "Casiers"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28405205537038,
+            "longitude": 2.7621713805216928,
+            "map_icon": "MapIcon:2f6a2fd2-668d-446e-901a-817498a66841",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:0ff6b70f-7857-4238-b3e6-a7838da5daa5",
+            "name_t": {
+              "de": "Maison Perrier®",
+              "en": "Maison Perrier®",
+              "fr": "Maison Perrier®"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28513410193733,
+            "longitude": 2.7591481942332905,
+            "map_icon": "MapIcon:7cf4d282-7326-4762-bdf0-cb4d3c097f2b",
+            "image": "https://assets.fragolabs.com/pC9PN70iv6fs3gjOAmU_FmRBaYMDvGhh2mLWd0GJHqw/rs:fit:1000:0:0/plain/upload/e565e687-3d36-4818-bc6e-156a4fa7a77b.jpg@jpg"
+          },
+          {
+            "id": "Location:1444a1b8-2bb4-4f98-9637-3486e36154e6",
+            "name_t": {
+              "de": "PÉL!-Bar",
+              "en": "PÉL!-Bar",
+              "fr": "PÉL!-Bar"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.28333608652278,
+            "longitude": 2.762091763053718,
+            "map_icon": "MapIcon:9b9523cc-6014-44e7-9eb7-38b1d9c4d878",
+            "image": "https://assets.fragolabs.com/DDEpA88NSNqjxI3glOk67gMDzNn3EuV5VXl6eTl_cx8/rs:fit:1000:0:0/plain/upload/15f280de-2433-4ffa-a88f-7f7e64f0af11.jpg@jpg"
+          },
+          {
+            "id": "Location:15de5a0e-96f1-4c23-bc02-39426d5e1632",
+            "name_t": {
+              "de": "Cabane Le Studio",
+              "en": "Cabane Le Studio",
+              "fr": "Cabane Le Studio"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Scènes",
+              "en": "Stages",
+              "fr": "Scènes"
+            },
+            "latitude": 50.28329292112096,
+            "longitude": 2.7618947676949688,
+            "map_icon": "MapIcon:e0d82dcb-65a4-4f25-a94b-6cebff5ddb35",
+            "image": "https://assets.fragolabs.com/pAJ2rQK8zmcMi2pqzqSf-E3Y5TcR9fTlzN-aHmgGHxQ/rs:fit:1000:0:0/plain/upload/f26b474f-4601-45c4-b891-6c19711ed1bd.jpg@jpg"
+          },
+          {
+            "id": "Location:174ff71a-059c-4704-850c-c90e7fc27ef9",
+            "name_t": {
+              "de": "Village Santé",
+              "en": "Village Santé",
+              "fr": "Village Santé"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28376101891851,
+            "longitude": 2.7610027751571806,
+            "map_icon": "MapIcon:12b87e0d-261f-42eb-8e92-e98a9b05ed2b",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:17d156cc-72c1-4fe1-94e0-978d57243e01",
+            "name_t": {
+              "de": "Merchandising - Artistes du Bastion",
+              "en": "Merchandising - Artistes du Bastion",
+              "fr": "Merchandising - Artistes du Bastion"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Merch",
+              "en": "Merch",
+              "fr": "Merch"
+            },
+            "latitude": 50.281581772341326,
+            "longitude": 2.7605002559620004,
+            "map_icon": "MapIcon:c941c121-9d4f-4461-85aa-1af2a75cd1db",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:186aef75-7448-45f6-aa3e-6e698f5480b2",
+            "name_t": {
+              "de": "Pincemin",
+              "en": "Pincemin",
+              "fr": "Pincemin"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.2853510792402,
+            "longitude": 2.758741238162372,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/fKLHRxQe7c-WidZSvw8OqVcwy5omJGiYq1nn8qBczik/rs:fit:1000:0:0/plain/upload/341834a2-5a88-4a63-9615-8321218d51bc.jpg@jpg"
+          },
+          {
+            "id": "Location:1dfdace1-d8a2-4d58-a8ec-e24270ca2c0f",
+            "name_t": {
+              "de": "Le Comptoir des îles",
+              "en": "Le Comptoir des îles",
+              "fr": "Le Comptoir des îles"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28515528886777,
+            "longitude": 2.7606932046343786,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/rEc64qtUzv1MCnNFbhbSnOw1MKxE8zBQCr4kRioVj9E/rs:fit:1000:0:0/plain/upload/4466d4d0-f98b-4449-a716-3561d54f26ce.jpg@jpg"
+          },
+          {
+            "id": "Location:1f064e13-a30c-4d79-8e7c-64b417fb960b",
+            "name_t": {
+              "de": "Le Trotter",
+              "en": "Le Trotter",
+              "fr": "Le Trotter"
+            },
+            "subtitle_t": {
+              "de": "Le tour du monde en wrap XXL",
+              "en": "Le tour du monde en wrap XXL",
+              "fr": "Le tour du monde en wrap XXL"
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28464880117065,
+            "longitude": 2.759358423469479,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/49mJ76X6x3Gi5qDpB3ocGiY7NwUe3GPpCoscvRzXuJI/rs:fit:1000:0:0/plain/upload/36ef2333-71ef-4f41-9be7-53d6d45f1fd7.png@jpg"
+          },
+          {
+            "id": "Location:210ab715-c843-4f17-9239-40110656ff95",
+            "name_t": {
+              "de": "Friterie Sensas",
+              "en": "Friterie Sensas",
+              "fr": "Friterie Sensas"
+            },
+            "subtitle_t": {
+              "de": "Le Bastion de la Reine",
+              "en": "Le Bastion de la Reine",
+              "fr": "Le Bastion de la Reine"
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.2819184298385,
+            "longitude": 2.7609691934386547,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/zebHdkHprmxMfXmUgfmOeEFj4I36oZNfVuirAXENQr0/rs:fit:1000:0:0/plain/upload/38f980b8-8948-44df-af82-818fb26c6095.png@jpg"
+          },
+          {
+            "id": "Location:210e6f25-16ab-4190-b602-9171f45f7e24",
+            "name_t": {
+              "de": "Zone WiFi Cashless",
+              "en": "Cashless WiFi Area",
+              "fr": "Zone WiFi Cashless"
+            },
+            "subtitle_t": {
+              "de": "Entrée",
+              "en": "Entrée",
+              "fr": "Entrée"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.284493230519075,
+            "longitude": 2.761483106850619,
+            "map_icon": "MapIcon:15fb929b-29c9-4d09-b720-f2b97af225f4",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:215bbd66-b275-4d4f-a808-94c89d203bb3",
+            "name_t": {
+              "de": "Poste de Secours",
+              "en": "Poste de Secours",
+              "fr": "Poste de Secours"
+            },
+            "subtitle_t": {
+              "de": "Main Stage",
+              "en": "Main Stage",
+              "fr": "Main Stage"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28232558343825,
+            "longitude": 2.7608972362075974,
+            "map_icon": "MapIcon:ac07048f-61ca-4691-a224-2da014e1b251",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:21df2f9f-1d1c-4632-8ca5-155a8dd79a49",
+            "name_t": {
+              "de": "Bar Jägermeister",
+              "en": "Bar Jägermeister",
+              "fr": "Bar Jägermeister"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.28349955761641,
+            "longitude": 2.7615733558822626,
+            "map_icon": "MapIcon:0aade1dc-ca2a-463d-98d9-ba3cd3d7cbba",
+            "image": "https://assets.fragolabs.com/V-DfBawIhrMEs0QxAeRF_EEIYup_wZ-bJdQ5JHxwo-c/rs:fit:1000:0:0/plain/upload/9bef2291-f44b-4454-932c-b04de7f60327.jpg@jpg"
+          },
+          {
+            "id": "Location:2219d755-fae3-40f2-846d-cb381018211d",
+            "name_t": {
+              "de": "La Bottega",
+              "en": "La Bottega",
+              "fr": "La Bottega"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.283593204638976,
+            "longitude": 2.761434459018517,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/SdspF_Rr8mAo8AV9Otg2rn8pWIE5-U8AbeICTnoiCYY/rs:fit:1000:0:0/plain/upload/f4598b00-67af-4819-b961-0479912d4506.png@jpg"
+          },
+          {
+            "id": "Location:2297dbdb-b3ea-445f-bced-bde628482218",
+            "name_t": {
+              "de": "Entrée Publique",
+              "en": "Entrée Publique",
+              "fr": "Entrée Publique"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.284639417508544,
+            "longitude": 2.7627316795785077,
+            "map_icon": "MapIcon:99c152c5-a9c7-416e-89cb-842ed9e71a43",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:231e8e67-86b6-4f22-82cc-981e51a5d56f",
+            "name_t": {
+              "de": "Zone WiFi Cashless",
+              "en": "Cashless WiFi Area",
+              "fr": "Zone WiFi Cashless"
+            },
+            "subtitle_t": {
+              "de": "Le Square",
+              "en": "Le Square",
+              "fr": "Le Square"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.285049036547434,
+            "longitude": 2.759425725227203,
+            "map_icon": "MapIcon:15fb929b-29c9-4d09-b720-f2b97af225f4",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:248f252f-79b6-4823-93ce-fb7de28cfed3",
+            "name_t": {
+              "de": "Recharge Mobile - Crédit Mutuel",
+              "en": "Recharge Mobile - Crédit Mutuel",
+              "fr": "Recharge Mobile - Crédit Mutuel"
+            },
+            "subtitle_t": {
+              "de": "Le Bastion de la Reine",
+              "en": "Le Bastion de la Reine",
+              "fr": "Le Bastion de la Reine"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28210028847758,
+            "longitude": 2.7612234334420407,
+            "map_icon": "MapIcon:aadfc779-d8f6-4cf2-a4b7-b4248d93e2c1",
+            "image": "https://assets.fragolabs.com/VRBEaflt4u1KUVxfC__r2m_zTw1tDlAL1qu7ELv7CMw/rs:fit:1000:0:0/plain/upload/3621aca3-74c6-42e4-b384-c19a62bb92ee.png@jpg"
+          },
+          {
+            "id": "Location:2575454f-a64b-431c-b7e9-fb502ad6c243",
+            "name_t": {
+              "de": "Poste de Secours",
+              "en": "Poste de Secours",
+              "fr": "Poste de Secours"
+            },
+            "subtitle_t": {
+              "de": "Le Square",
+              "en": "Le Square",
+              "fr": "Le Square"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.284856651649704,
+            "longitude": 2.759182133845428,
+            "map_icon": "MapIcon:ac07048f-61ca-4691-a224-2da014e1b251",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:29944616-8843-49c5-a5fe-5ca4a599dfc7",
+            "name_t": {
+              "de": "O'Tacos - French Tacos Boss",
+              "en": "O'Tacos - French Tacos Boss",
+              "fr": "O'Tacos - French Tacos Boss"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.284743326451036,
+            "longitude": 2.7596906606194977,
+            "map_icon": "MapIcon:d34a84e2-65df-4b82-9a75-c99f836251fa",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:2ccf46fe-a149-410d-aaf1-98268359bf74",
+            "name_t": {
+              "de": "La Broche",
+              "en": "La Broche",
+              "fr": "La Broche"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.283746614974376,
+            "longitude": 2.7592425261517803,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/MzLJTeeEiQJv7VCAxfuEUb-HwwFV42L0-332WY9pVVI/rs:fit:1000:0:0/plain/upload/9a2affdb-700e-44a7-a300-5f899c23e72e.png@jpg"
+          },
+          {
+            "id": "Location:2daaa633-e22c-4b0e-9910-50b2602d95c3",
+            "name_t": {
+              "de": "Bar à Vins des Côtes du Rhône",
+              "en": "Bar à Vins des Côtes du Rhône",
+              "fr": "Bar à Vins des Côtes du Rhône"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.28501602415156,
+            "longitude": 2.761013771806205,
+            "map_icon": "MapIcon:29108ed4-155c-4f0b-9f9b-d722fec189c1",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:350ec79b-19ef-4ff8-8bdf-8061ac433152",
+            "name_t": {
+              "de": "Bar à mojito",
+              "en": "Bar à mojito",
+              "fr": "Bar à mojito"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.283478166107926,
+            "longitude": 2.761293116675688,
+            "map_icon": "MapIcon:9df341bc-7a10-4a4a-ac7f-5d48be54f421",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:36e39e06-9c8a-4e94-ae7e-49eb1606c4c3",
+            "name_t": {
+              "de": "Déconsigne",
+              "en": "Déconsigne",
+              "fr": "Déconsigne"
+            },
+            "subtitle_t": {
+              "de": "Le Bastion de la Reine",
+              "en": "Le Bastion de la Reine",
+              "fr": "Le Bastion de la Reine"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28187893476013,
+            "longitude": 2.7615579687075353,
+            "map_icon": "MapIcon:9f7d404e-29a2-424e-9919-016bb3f9cd83",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:3703dd8b-cc82-4007-9450-bdbc281a4f72",
+            "name_t": {
+              "de": "Bar à cocktails",
+              "en": "Bar à cocktails",
+              "fr": "Bar à cocktails"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.284068569230044,
+            "longitude": 2.7616459510019524,
+            "map_icon": "MapIcon:839af132-f35b-4b0a-8f95-be8c34175c5f",
+            "image": "https://assets.fragolabs.com/1zGvyiaQoa5UFrpm4ePLdhCKHe4fkVwU69HRUfenrog/rs:fit:1000:0:0/plain/upload/2da6e0f9-1174-4697-93be-29b0da8ced57.jpg@jpg"
+          },
+          {
+            "id": "Location:38f4a1b8-a8ad-40ac-8418-5bf8a7b0a8a9",
+            "name_t": {
+              "de": "Le Bar à becs",
+              "en": "Le Bar à becs",
+              "fr": "Le Bar à becs"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.283392983668705,
+            "longitude": 2.7633598705812403,
+            "map_icon": "MapIcon:65e64ac4-7191-4887-92ed-81159357df79",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:39e92a4e-c48b-4673-982e-809453c7c168",
+            "name_t": {
+              "de": "GEM L'Avis",
+              "en": "GEM L'Avis",
+              "fr": "GEM L'Avis"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28234075917106,
+            "longitude": 2.7616400089002298,
+            "map_icon": "",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:3acd093e-9a43-47d9-adab-737c3dd0494a",
+            "name_t": {
+              "de": "Main Stage",
+              "en": "Main Stage",
+              "fr": "Main Stage"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Scènes",
+              "en": "Stages",
+              "fr": "Scènes"
+            },
+            "latitude": 50.282934290033836,
+            "longitude": 2.759676924780564,
+            "map_icon": "MapIcon:b81f2042-0e9e-4801-89c1-c92c1e9474f6",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:3aeb3e9c-f9b8-40f2-8f98-89106ca2397f",
+            "name_t": {
+              "de": "Nolita",
+              "en": "Nolita",
+              "fr": "Nolita"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.284670250874626,
+            "longitude": 2.759468383495232,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/3G-TZpxym2sSK54k5wsYhPuhXE_XJedVfs4IOgVQWIg/rs:fit:1000:0:0/plain/upload/a259bccf-dcea-43bf-a310-f1de13e6e5d6.png@jpg"
+          },
+          {
+            "id": "Location:3b3f0251-9f77-4018-8ab2-2ce1751c0574",
+            "name_t": {
+              "de": "Churros",
+              "en": "Churros",
+              "fr": "Churros"
+            },
+            "subtitle_t": {
+              "de": "Churros - Le Bastion de la Reine",
+              "en": "Churros - Le Bastion de la Reine",
+              "fr": "Churros - Le Bastion de la Reine"
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.281980693926556,
+            "longitude": 2.761402053578365,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/qIGg6Ml8gvToFI1OO7SZ6y0c1xpSjtAnujlGHMxRVOo/rs:fit:1000:0:0/plain/upload/e6cd3281-21db-4c54-be82-f88039110c1e.png@jpg"
+          },
+          {
+            "id": "Location:3b4e7a6b-7bd3-492a-932e-48177e64bffa",
+            "name_t": {
+              "de": "Toilettes",
+              "en": "Toilettes",
+              "fr": "Toilettes"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.283108722284624,
+            "longitude": 2.762931962907686,
+            "map_icon": "MapIcon:6c284487-7232-40ce-aa56-5d336a74202b",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:3bfbca2c-57da-4678-905c-df91295d7730",
+            "name_t": {
+              "de": "Vauban",
+              "en": "Vauban",
+              "fr": "Vauban"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Scènes",
+              "en": "Stages",
+              "fr": "Scènes"
+            },
+            "latitude": 50.28400580854259,
+            "longitude": 2.758534591757382,
+            "map_icon": "MapIcon:83b31967-764a-4f8d-ac28-75d6adb00ddf",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:3c9a4ed2-7c84-4f16-8878-ffecee5a32e5",
+            "name_t": {
+              "de": "Tatouages éphémères",
+              "en": "Ephemeral tattoo",
+              "fr": "Tatouages éphémères"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Fun & Lifestyle",
+              "en": "Fun & Lifestyle",
+              "fr": "Fun & Lifestyle"
+            },
+            "latitude": 50.28567002408954,
+            "longitude": 2.759324069678854,
+            "map_icon": "MapIcon:9ee4c8dd-1855-4d49-b63e-7aedefd32e3a",
+            "image": "https://assets.fragolabs.com/rYaeACB2Od5aWX8ECH_AzNAgOobyU9oUM35qyhS-fqQ/rs:fit:1000:0:0/plain/upload/b10ac1a3-72ce-43a1-8b3c-46b86c0f6f78.jpg@jpg"
+          },
+          {
+            "id": "Location:3e035e9e-567c-4425-91b3-ab680c1d5df7",
+            "name_t": {
+              "de": "C&K Associates",
+              "en": "C&K Associates",
+              "fr": "C&K Associates"
+            },
+            "subtitle_t": {
+              "de": "Les Remparts",
+              "en": "Les Remparts",
+              "fr": "Les Remparts"
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28512260524553,
+            "longitude": 2.7605899307536674,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/ZxyOPraA3zL77k65VOzpLjbN29jyyNI0fg85zYC5YTs/rs:fit:1000:0:0/plain/upload/949b0ba7-74ff-4b2e-bb34-13a0ba738d0f.jpg@jpg"
+          },
+          {
+            "id": "Location:42f00aaa-1be0-491c-bbb1-266d6e37b01b",
+            "name_t": {
+              "de": "Jeux Flamands",
+              "en": "Jeux Flamands",
+              "fr": "Jeux Flamands"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28118848761383,
+            "longitude": 2.760705226209211,
+            "map_icon": "MapIcon:ac024a58-ccd5-499d-81a3-0bd6f3e111ca",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:4591b52e-8a9e-4193-b82c-9c0cca3c5255",
+            "name_t": {
+              "de": "Bastion",
+              "en": "Bastion",
+              "fr": "Bastion"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Scènes",
+              "en": "Stages",
+              "fr": "Scènes"
+            },
+            "latitude": 50.28169904752849,
+            "longitude": 2.7608643783050013,
+            "map_icon": "MapIcon:5c6fb004-6419-48ef-842f-02a2969cca8a",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:4713b648-74e4-42e5-8506-943604c73a31",
+            "name_t": {
+              "de": "Espace Relaxation - Crédit Mutuel",
+              "en": "Espace Relaxation - Crédit Mutuel",
+              "fr": "Espace Relaxation - Crédit Mutuel"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28523042592741,
+            "longitude": 2.760965139797662,
+            "map_icon": "MapIcon:6ef6feae-da62-4f1c-ad02-58972f359e3d",
+            "image": "https://assets.fragolabs.com/-KHqx7s72w8DTyhg00cYqWOLqJhfubGAh98t1cganxg/rs:fit:1000:0:0/plain/upload/09495303-6b30-487d-a16c-062fd144f934.png@jpg"
+          },
+          {
+            "id": "Location:475ced8e-4ad8-429c-91a5-ab6d35ea6845",
+            "name_t": {
+              "de": "Choukette",
+              "en": "Choukette",
+              "fr": "Choukette"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28114659471862,
+            "longitude": 2.7608660780256855,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/1VQaKKoSAoiVcWc9fWNWgOgIfNvWK3a9h2mQMvWP-hY/rs:fit:1000:0:0/plain/upload/7dd08e4d-1946-4eea-8d30-34d7769af461.png@jpg"
+          },
+          {
+            "id": "Location:47bddb71-ea60-4eed-a04c-88fb42824eca",
+            "name_t": {
+              "de": "Bar",
+              "en": "Bar",
+              "fr": "Bar"
+            },
+            "subtitle_t": {
+              "de": "Chapelle",
+              "en": "Chapelle",
+              "fr": "Chapelle"
+            },
+            "category_t": {
+              "de": "Bars",
+              "en": "Bars",
+              "fr": "Bars"
+            },
+            "latitude": 50.28354940213947,
+            "longitude": 2.7598249104332524,
+            "map_icon": "MapIcon:ab4b96a8-7cbd-40ed-b5c7-95683ee71719",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:48ab1695-0766-494d-9452-3068e45cc81d",
+            "name_t": {
+              "de": "Kawa Club",
+              "en": "Kawa Club",
+              "fr": "Kawa Club"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28271610064158,
+            "longitude": 2.760728186399234,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/DKF5TYl8hCGj0IIuxiO-rgt_EMdRpRtKs4mnRziHEas/rs:fit:1000:0:0/plain/upload/a9b4aebb-95d7-4b79-8c20-540824b47f2c.jpg@jpg"
+          },
+          {
+            "id": "Location:4a207e56-edf3-45f1-a7c8-f02b88f622bc",
+            "name_t": {
+              "de": "Safe Team",
+              "en": "Safe Team",
+              "fr": "Safe Team"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28161827956572,
+            "longitude": 2.7604602194042513,
+            "map_icon": "MapIcon:53e29003-fe96-4c64-9acb-25c6aface193",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:4af92ca7-dba8-4a9e-a58c-d8e0fd005de4",
+            "name_t": {
+              "de": "Churros",
+              "en": "Churros",
+              "fr": "Churros"
+            },
+            "subtitle_t": {
+              "de": "Churros - Green Room",
+              "en": "Churros - Green Room",
+              "fr": "Churros - Green Room"
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28427184546294,
+            "longitude": 2.760568874293682,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/iuuCyc8-8vdw3tTEKtjE4ISdLaPNsxyUf0NCHDSfV60/rs:fit:1000:0:0/plain/upload/123b5b6f-8695-4e27-a43a-0f57261be971.png@jpg"
+          },
+          {
+            "id": "Location:4cbd4490-fd5b-49ae-9a01-b01464da6bee",
+            "name_t": {
+              "de": "Recharge Mobile - Crédit Mutuel",
+              "en": "Recharge Mobile - Crédit Mutuel",
+              "fr": "Recharge Mobile - Crédit Mutuel"
+            },
+            "subtitle_t": {
+              "de": "Les Remparts",
+              "en": "Les Remparts",
+              "fr": "Les Remparts"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28361165930875,
+            "longitude": 2.762613315531837,
+            "map_icon": "MapIcon:aadfc779-d8f6-4cf2-a4b7-b4248d93e2c1",
+            "image": "https://assets.fragolabs.com/yRaLS4XWJ_t0oeg9Z2wXP-AxbwCkJZRHeJYtlzXn684/rs:fit:1000:0:0/plain/upload/c5e0c9a5-ed74-4639-9a3b-a365270685e4.png@jpg"
+          },
+          {
+            "id": "Location:4e8f385b-92f4-4f1f-876e-f66409235b74",
+            "name_t": {
+              "de": "Friterie Meunier",
+              "en": "Friterie Meunier",
+              "fr": "Friterie Meunier"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.283643034345374,
+            "longitude": 2.763152824531062,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/cyvu_7Ey-hqMeZ88EJROz89PiKpUjRroNw5WH47_cwQ/rs:fit:1000:0:0/plain/upload/8779b7ec-2601-40a9-a665-d9857f498964.png@jpg"
+          },
+          {
+            "id": "Location:54dd60d0-6d9d-460b-b4a5-ad4b44b56916",
+            "name_t": {
+              "de": "Consignes / Litiges",
+              "en": "Consignes / Litiges",
+              "fr": "Consignes / Litiges"
+            },
+            "subtitle_t": {
+              "de": "Nord",
+              "en": "Nord",
+              "fr": "Nord"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.285773769735414,
+            "longitude": 2.7613697663948926,
+            "map_icon": "MapIcon:b0066f8c-0985-4a28-a8fb-5dc66dfb7eae",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:554c2c96-3359-4f39-bb0b-87ef9cec6b36",
+            "name_t": {
+              "de": "Terrasse VIP",
+              "en": "Terrasse VIP",
+              "fr": "Terrasse VIP"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "VIP",
+              "en": "VIP",
+              "fr": "VIP"
+            },
+            "latitude": 50.28295094026984,
+            "longitude": 2.7608948105484785,
+            "map_icon": "MapIcon:94da42ec-1c85-47dd-b759-246a3243fbe2",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:56955865-1dd1-4c6a-831c-c3daa6fdffd2",
+            "name_t": {
+              "de": "Guichet VIP",
+              "en": "Guichet VIP",
+              "fr": "Guichet VIP"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "VIP",
+              "en": "VIP",
+              "fr": "VIP"
+            },
+            "latitude": 50.284056046755325,
+            "longitude": 2.7645965675496313,
+            "map_icon": "MapIcon:a7425731-f35f-4f4c-b5bc-676b546e9cb4",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:58b9f24f-698a-454f-8e88-3b4adae6e5c5",
+            "name_t": {
+              "de": "Un Amour de Bonbon",
+              "en": "Un Amour de Bonbon",
+              "fr": "Un Amour de Bonbon"
+            },
+            "subtitle_t": {
+              "de": "Crêpes - Gaufres / Les Cabanes",
+              "en": "Crêpes - Gaufres / Les Cabanes",
+              "fr": "Crêpes - Gaufres / Les Cabanes"
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28337472143062,
+            "longitude": 2.761766303902789,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/C6h1nULOiuiuusLcEzpRk6VytJtuiexX7gnUri7Y_gw/rs:fit:1000:0:0/plain/upload/0929ea19-65e3-4e8f-ae3e-1ba891a3630a.png@jpg"
+          },
+          {
+            "id": "Location:58ffdc06-d0ed-4486-8aaf-369a12716813",
+            "name_t": {
+              "de": "Crispy Fries Bowl",
+              "en": "Crispy Fries Bowl",
+              "fr": "Crispy Fries Bowl"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28369691352853,
+            "longitude": 2.7593182930641547,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/i6ABHGg4lhd3W2QWJv5-K8jP2uYhO3WDBK7YOTLVbzw/rs:fit:1000:0:0/plain/upload/91d81535-67be-42d6-910e-10f4f0a2229a.jpg@jpg"
+          },
+          {
+            "id": "Location:5ca24a77-6c34-4724-bd2f-86023247b110",
+            "name_t": {
+              "de": "Poulet d'Enfer",
+              "en": "Poulet d'Enfer",
+              "fr": "Poulet d'Enfer"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.281116213147726,
+            "longitude": 2.760997338155164,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/_tNQyclbEUfaNluxO6yxd0GsHWPnECHkX7L8SyqGprY/rs:fit:1000:0:0/plain/upload/7c55981d-8be4-4984-aeb1-c489411224d6.png@jpg"
+          },
+          {
+            "id": "Location:5ceea216-52eb-4444-ab19-9d866c0a3dcf",
+            "name_t": {
+              "de": "Hip-Hop Square",
+              "en": "Hip-Hop Square",
+              "fr": "Hip-Hop Square"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28554149650509,
+            "longitude": 2.760254910155311,
+            "map_icon": "MapIcon:6aa9251a-6165-48bd-9bea-d402105192fa",
+            "image": "https://assets.fragolabs.com/7rdFn2AZebH35L4oMHZffgaqWB-lu_4W39piaoZY_eU/rs:fit:1000:0:0/plain/upload/742a21ad-0a03-4608-814c-9ffa405f6d13.png@jpg"
+          },
+          {
+            "id": "Location:5fe8e278-38e5-4f95-ba6c-500c31798d38",
+            "name_t": {
+              "de": "Toilettes",
+              "en": "Toilettes",
+              "fr": "Toilettes"
+            },
+            "subtitle_t": {
+              "de": "Les Remparts - Bar des Officiers",
+              "en": "Les Remparts - Bar des Officiers",
+              "fr": "Les Remparts - Bar des Officiers"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28403961764525,
+            "longitude": 2.7618751475146723,
+            "map_icon": "MapIcon:6c284487-7232-40ce-aa56-5d336a74202b",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:60329afe-5164-4bc6-b2d9-ef41253f6b52",
+            "name_t": {
+              "de": "Food Station",
+              "en": "Food Station",
+              "fr": "Food Station"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28263126388177,
+            "longitude": 2.7612897444473106,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/YtNT8Bt-Ur1fOmAWmK4O16NvjVGC6BeVMnhEPKDi_Ms/rs:fit:1000:0:0/plain/upload/dc63cd4b-0e71-4b6a-ad1d-3df6980dc101.jpg@jpg"
+          },
+          {
+            "id": "Location:616536c5-695e-479f-a6ed-0a168966c7bf",
+            "name_t": {
+              "de": "Le Comptoir Picon",
+              "en": "Le Comptoir Picon",
+              "fr": "Le Comptoir Picon"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.284787221191294,
+            "longitude": 2.7594325629202103,
+            "map_icon": "MapIcon:d3525e94-5c68-4fea-a9e1-e50cc268a533",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:640d3add-8129-4845-9a31-f98e108948e6",
+            "name_t": {
+              "de": "Bar",
+              "en": "Bar",
+              "fr": "Bar"
+            },
+            "subtitle_t": {
+              "de": "Main Stage 2",
+              "en": "Main Stage 2",
+              "fr": "Main Stage 2"
+            },
+            "category_t": {
+              "de": "Bars",
+              "en": "Bars",
+              "fr": "Bars"
+            },
+            "latitude": 50.282802949199436,
+            "longitude": 2.7606786644734314,
+            "map_icon": "MapIcon:ab4b96a8-7cbd-40ed-b5c7-95683ee71719",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:696750c9-e920-4a6d-ab3a-8e0480b6c3ba",
+            "name_t": {
+              "de": "Zone WiFi Cashless",
+              "en": "Cashless WiFi Area",
+              "fr": "Zone WiFi Cashless"
+            },
+            "subtitle_t": {
+              "de": "Les Cabanes",
+              "en": "Les Cabanes",
+              "fr": "Les Cabanes"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28353773260358,
+            "longitude": 2.7618468087122494,
+            "map_icon": "MapIcon:15fb929b-29c9-4d09-b720-f2b97af225f4",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:6ab13c00-d3d7-4808-a59e-d78cea510c81",
+            "name_t": {
+              "de": "Friterie Sensas",
+              "en": "Friterie Sensas",
+              "fr": "Friterie Sensas"
+            },
+            "subtitle_t": {
+              "de": "Les Cabanes",
+              "en": "Les Cabanes",
+              "fr": "Les Cabanes"
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.2835402888841,
+            "longitude": 2.7615147881104747,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/6nk_LEUGvPSh6YhtUsTwEcPWYmXqGMbUYY7tr0AEy0k/rs:fit:1000:0:0/plain/upload/c2c7fb9a-bba0-40b0-81bf-70b975931ccf.png@jpg"
+          },
+          {
+            "id": "Location:6c855b14-449c-4267-9361-a254fc489309",
+            "name_t": {
+              "de": "Basket by A.P.A.B.F.",
+              "en": "Basket by A.P.A.B.F.",
+              "fr": "Basket by A.P.A.B.F."
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28552538288719,
+            "longitude": 2.7599430009668424,
+            "map_icon": "MapIcon:e8c45e33-7bb4-44d6-a89e-29c87c11ec14",
+            "image": "https://assets.fragolabs.com/IJs6NGh8LXWcx3UGgvpL2iFMDNHk4i_QySKHotAvefQ/rs:fit:1000:0:0/plain/upload/0d07f421-d6b2-42f9-badc-ccab4a3fb115.jpg@jpg"
+          },
+          {
+            "id": "Location:6dce33f9-d2c1-4ca6-a42b-92980ff6a0a6",
+            "name_t": {
+              "de": "Point Infos Cashless",
+              "en": "Point Infos Cashless",
+              "fr": "Point Infos Cashless"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28455755110792,
+            "longitude": 2.7613913321157213,
+            "map_icon": "MapIcon:6a108b22-8a46-4e0e-969f-85af3d69569f",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:6e6d18e5-eb9a-47be-8fcf-ce4d3106e0ea",
+            "name_t": {
+              "de": "Bar à Bières",
+              "en": "Beer Bar",
+              "fr": "Bar à Bières"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.28455587842279,
+            "longitude": 2.760141248299419,
+            "map_icon": "MapIcon:88537386-0a74-4058-87a5-1e86cb95f4de",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:6f152646-9d59-4e11-8102-0eab192015eb",
+            "name_t": {
+              "de": "L'usine à patates",
+              "en": "L'usine à patates",
+              "fr": "L'usine à patates"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.283296403831685,
+            "longitude": 2.7632295158879003,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/8XLprH2g1uc5-LP84UYBWvYOBv97Z4tV-_396O_fGRE/rs:fit:1000:0:0/plain/upload/d47f9b42-90fd-4cb1-9e3a-db70ab768705.png@jpg"
+          },
+          {
+            "id": "Location:6f81724d-a7a4-4222-b3a7-1293ad91fbec",
+            "name_t": {
+              "de": "Make-Up & Coiffure",
+              "en": "Make-Up & Coiffure",
+              "fr": "Make-Up & Coiffure"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Fun & Lifestyle",
+              "en": "Fun & Lifestyle",
+              "fr": "Fun & Lifestyle"
+            },
+            "latitude": 50.28561985044851,
+            "longitude": 2.759318245475356,
+            "map_icon": "MapIcon:89af1bd9-cf46-4648-9530-6154c427bd4b",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:720c3115-0304-4c4d-b46b-25691b9ef1ae",
+            "name_t": {
+              "de": "Friterie Momo",
+              "en": "Friterie Momo",
+              "fr": "Friterie Momo"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28186026605724,
+            "longitude": 2.761073002634731,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/F5GyxE8oYK1RGOsQzYF_JAFTr8bz9IuyqS1eZsDGKHY/rs:fit:1000:0:0/plain/upload/304b1357-a019-448c-94fd-c9abf2c67d90.png@jpg"
+          },
+          {
+            "id": "Location:722ff357-3952-45d9-9882-978faf3a899b",
+            "name_t": {
+              "de": "Entrée PSH / PMR",
+              "en": "Entrée PSH / PMR",
+              "fr": "Entrée PSH / PMR"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28608314524985,
+            "longitude": 2.7593804747774584,
+            "map_icon": "MapIcon:72f56806-8cb3-4727-8a05-7078d4be9f11",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:72cc218b-d8bf-4f73-bfe0-9a046825140b",
+            "name_t": {
+              "de": "L'Auberge des saveurs",
+              "en": "L'Auberge des saveurs",
+              "fr": "L'Auberge des saveurs"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.2835913009765,
+            "longitude": 2.7594975267444966,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/yUIg0vgHm1lDdAdjYAfNkEevah416SxLSwbAzIynlQg/rs:fit:1000:0:0/plain/upload/b252dab0-8a16-44d1-91e2-7b0503d84227.jpg@jpg"
+          },
+          {
+            "id": "Location:73536ef2-84e2-4bdf-b334-9aaaf83a774e",
+            "name_t": {
+              "de": "French Toque",
+              "en": "French Toque",
+              "fr": "French Toque"
+            },
+            "subtitle_t": {
+              "de": "Le burger des terroirs",
+              "en": "Le burger des terroirs",
+              "fr": "Le burger des terroirs"
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28505744079317,
+            "longitude": 2.760510566042342,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/ZnA1XdS2jA7gg7ZA-T4pjusFUQ1B_HTA-dZZ2PWRo2Q/rs:fit:1000:0:0/plain/upload/677af480-bc0a-43ce-af28-8c305dd2d585.jpg@jpg"
+          },
+          {
+            "id": "Location:782a8333-0a4f-48b6-8920-a69e127873d1",
+            "name_t": {
+              "de": "Merchandising",
+              "en": "Merchandising",
+              "fr": "Merchandising"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Merch",
+              "en": "Merch",
+              "fr": "Merch"
+            },
+            "latitude": 50.28365647722799,
+            "longitude": 2.7613660356919922,
+            "map_icon": "MapIcon:2ebabf17-9439-489b-8bef-f770cba7647b",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:7c6a0593-a2b9-4890-b957-34a22b70d3f8",
+            "name_t": {
+              "de": "Nord'Olive",
+              "en": "Nord'Olive",
+              "fr": "Nord'Olive"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.284771339207936,
+            "longitude": 2.760764780195501,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/f3HwnW1RcKXR0HvMmriLuoCpvaVjw0oBGPJYUS7KW7M/rs:fit:1000:0:0/plain/upload/f1736b8f-011b-4eab-afd7-becbb7990a0b.jpg@jpg"
+          },
+          {
+            "id": "Location:7e994735-bb6b-4a5b-9022-58c17a519509",
+            "name_t": {
+              "de": "Passage VIP <> Public",
+              "en": "Passage VIP <> Public",
+              "fr": "Passage VIP <> Public"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "VIP",
+              "en": "VIP",
+              "fr": "VIP"
+            },
+            "latitude": 50.28292566468835,
+            "longitude": 2.761954741719933,
+            "map_icon": "MapIcon:2c370660-0102-47c8-bacb-f0595581c264",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:7ec1f4f0-e898-411e-85cf-ad54b1923b10",
+            "name_t": {
+              "de": "Un Amour de Bonbon",
+              "en": "Un Amour de Bonbon",
+              "fr": "Un Amour de Bonbon"
+            },
+            "subtitle_t": {
+              "de": "Burger Truck - Le Bastion de la Reine",
+              "en": "Burger Truck - Le Bastion de la Reine",
+              "fr": "Burger Truck - Le Bastion de la Reine"
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.281721911161014,
+            "longitude": 2.761263813722138,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/O2fehJyPLHSaZg2o0bDD3dcKuVIVz8BvzZfh3TuDmsw/rs:fit:1000:0:0/plain/upload/c4c746fd-9f21-4e88-9ed5-942367fd1457.png@jpg"
+          },
+          {
+            "id": "Location:80e8a5ca-22fa-47c4-a090-4e26672b3eca",
+            "name_t": {
+              "de": "Plateforme PSH / PMR",
+              "en": "Plateforme PSH / PMR",
+              "fr": "Plateforme PSH / PMR"
+            },
+            "subtitle_t": {
+              "de": "Main Stage",
+              "en": "Main Stage",
+              "fr": "Main Stage"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28345524650649,
+            "longitude": 2.75968076955877,
+            "map_icon": "MapIcon:1c7ee431-5ca4-483b-9571-0cc2e0df6658",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:818cf4cd-4a92-47f6-bf26-be58ecfa52f9",
+            "name_t": {
+              "de": "La Guinguette Vico",
+              "en": "La Guinguette Vico",
+              "fr": "La Guinguette Vico"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28484250435665,
+            "longitude": 2.759572282164015,
+            "map_icon": "MapIcon:50dc846f-534a-4b56-a9bc-2a2b7326fce7",
+            "image": "https://assets.fragolabs.com/kdlMYbQcy1NwMBB2CjkCk8WD7BEspHp0Igmc2KB5Kr4/rs:fit:1000:0:0/plain/upload/adffc377-6b9a-48ac-8b69-3c16574b26d6.jpg@jpg"
+          },
+          {
+            "id": "Location:84bdb5cf-a385-479f-a560-90177e32e965",
+            "name_t": {
+              "de": "Billetterie / Invitations",
+              "en": "Billetterie / Invitations",
+              "fr": "Billetterie / Invitations"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.284107693427984,
+            "longitude": 2.7645233728485152,
+            "map_icon": "MapIcon:8661ce26-c848-436e-8c57-3c52cc4b6bf2",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:85a48bb7-af7c-4a9a-9246-dd865c05bf18",
+            "name_t": {
+              "de": "Bar Jägermeister",
+              "en": "Bar Jägermeister",
+              "fr": "Bar Jägermeister"
+            },
+            "subtitle_t": {
+              "de": "Les Cabanes",
+              "en": "Les Cabanes",
+              "fr": "Les Cabanes"
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.28330583558869,
+            "longitude": 2.7618640840915134,
+            "map_icon": "MapIcon:0aade1dc-ca2a-463d-98d9-ba3cd3d7cbba",
+            "image": "https://assets.fragolabs.com/V-DfBawIhrMEs0QxAeRF_EEIYup_wZ-bJdQ5JHxwo-c/rs:fit:1000:0:0/plain/upload/9bef2291-f44b-4454-932c-b04de7f60327.jpg@jpg"
+          },
+          {
+            "id": "Location:88af8891-5a98-40fa-93c5-2631d0aa475d",
+            "name_t": {
+              "de": "Photomaton - Crédit Mutuel",
+              "en": "Photomaton - Crédit Mutuel",
+              "fr": "Photomaton - Crédit Mutuel"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.285439911340205,
+            "longitude": 2.759343680519663,
+            "map_icon": "MapIcon:af9570f2-e4c0-4c8f-9341-30065f4d5920",
+            "image": "https://assets.fragolabs.com/0-jE_dtD1A0g8woRBr-3PxLwiJ4a6Nr2uxSZfr7ngMk/rs:fit:1000:0:0/plain/upload/6fbeb6b8-bac0-40f8-9e7b-0eaed93b67d2.png@jpg"
+          },
+          {
+            "id": "Location:8b795186-9885-4dfb-83a7-eb6cf47e5cb7",
+            "name_t": {
+              "de": "Bar",
+              "en": "Bar",
+              "fr": "Bar"
+            },
+            "subtitle_t": {
+              "de": "Main Stage 4",
+              "en": "Main Stage 4",
+              "fr": "Main Stage 4"
+            },
+            "category_t": {
+              "de": "Bars",
+              "en": "Bars",
+              "fr": "Bars"
+            },
+            "latitude": 50.28379604728249,
+            "longitude": 2.7607910789375296,
+            "map_icon": "MapIcon:ab4b96a8-7cbd-40ed-b5c7-95683ee71719",
+            "image": "https://assets.fragolabs.com/mfYhAyfD0cGMT9cd55UQlufMQrQcaJvhZX0oslQrSfs/rs:fit:1000:0:0/plain/upload/b9e97a3a-8374-4d31-a55c-4500dfa46c7a.jpg@jpg"
+          },
+          {
+            "id": "Location:91e44d32-0e3a-4b00-88de-36665e1e4cbc",
+            "name_t": {
+              "de": "Point Infos",
+              "en": "Point Infos",
+              "fr": "Point Infos"
+            },
+            "subtitle_t": {
+              "de": "Objets Trouvés - Crédit Mutuel",
+              "en": "Objets Trouvés - Crédit Mutuel",
+              "fr": "Objets Trouvés - Crédit Mutuel"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.283896648265426,
+            "longitude": 2.7612467862669234,
+            "map_icon": "MapIcon:1136e72e-b1f2-447e-b09b-a4d5a09bf340",
+            "image": "https://assets.fragolabs.com/_PUbpWR1hh_SPW-z5vq0MWjiM3E3W8WHAXBUe4F-3BE/rs:fit:1000:0:0/plain/upload/35bd2a5f-a4f3-4a80-ba62-6d809224e9ff.png@jpg"
+          },
+          {
+            "id": "Location:9284d4d1-daba-403d-83b8-8d7a99132005",
+            "name_t": {
+              "de": "Au Feu Le Saumon",
+              "en": "Au Feu Le Saumon",
+              "fr": "Au Feu Le Saumon"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28368391343352,
+            "longitude": 2.7629079255878537,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/Wcqcmu3gmldn-MMTYlMmLLk4y3hVQ1GttxWn30dzeEQ/rs:fit:1000:0:0/plain/upload/170032cd-f25f-4a23-911e-5892779fbce2.jpg@jpg"
+          },
+          {
+            "id": "Location:92d6c8ec-d400-48c0-8ab1-8afad77af5ed",
+            "name_t": {
+              "de": "Chill Zone by La Voix du Nord",
+              "en": "Chill Zone by La Voix du Nord",
+              "fr": "Chill Zone by La Voix du Nord"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28536254477251,
+            "longitude": 2.7593484355749354,
+            "map_icon": "MapIcon:4d6ab0f0-568f-4be8-ad89-7690b6474a61",
+            "image": "https://assets.fragolabs.com/vqfUhsvhxh0IujehCPRLEwrHzDOFRQC7QmHZN2PsTSM/rs:fit:1000:0:0/plain/upload/2b379084-ad3c-48da-9094-248adb94acf1.jpg@jpg"
+          },
+          {
+            "id": "Location:96919084-3991-4850-ad6b-9a0e280a3b73",
+            "name_t": {
+              "de": "Déconsigne",
+              "en": "Déconsigne",
+              "fr": "Déconsigne"
+            },
+            "subtitle_t": {
+              "de": "Entrée",
+              "en": "Entrée",
+              "fr": "Entrée"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.2837114970161,
+            "longitude": 2.7609246994474006,
+            "map_icon": "MapIcon:9f7d404e-29a2-424e-9919-016bb3f9cd83",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:9da2c2a4-9c5f-4b27-b80d-97fe8f7aca98",
+            "name_t": {
+              "de": "Friterie Frénoi",
+              "en": "Friterie Frénoi",
+              "fr": "Friterie Frénoi"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.285284940527504,
+            "longitude": 2.7588494173028835,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/Uq3b4SB1mdWSwPe94cwHBwMqDbmgONg3GSGi2tTD7HQ/rs:fit:1000:0:0/plain/upload/7fbf098d-554f-4da4-934f-e0d1ea66c705.jpg@jpg"
+          },
+          {
+            "id": "Location:a0d8d4f5-ff9d-4479-9065-564549888f30",
+            "name_t": {
+              "de": "SuperXP Coca-Cola",
+              "en": "SuperXP Coca-Cola",
+              "fr": "SuperXP Coca-Cola"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28520057986944,
+            "longitude": 2.75901663438421,
+            "map_icon": "MapIcon:fdf14693-108f-4856-a9bf-4982b3bca077",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:ad3f866f-ba81-47db-b460-b7daa732c2f8",
+            "name_t": {
+              "de": "Bar Ricard",
+              "en": "Bar Ricard",
+              "fr": "Bar Ricard"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.28506642658283,
+            "longitude": 2.7599391859770037,
+            "map_icon": "MapIcon:e22c6535-15d0-4a42-a751-fceab7c4c393",
+            "image": "https://assets.fragolabs.com/sgqgmQdit60sWJbzAGrAqrGOfk6f5wH8aB5tQ8Um2HE/rs:fit:1000:0:0/plain/upload/939c940f-3e06-434c-bd70-5e7910727e50.jpg@jpg"
+          },
+          {
+            "id": "Location:ada95e7d-c7a9-4056-a2d6-e7169ae8ffd5",
+            "name_t": {
+              "de": "Zadig & Voltaire Parfums",
+              "en": "Zadig & Voltaire Parfums",
+              "fr": "Zadig & Voltaire Parfums"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28506218456042,
+            "longitude": 2.7592146640928377,
+            "map_icon": "MapIcon:6dc7d365-8817-4320-912d-186bee97c52c",
+            "image": "https://assets.fragolabs.com/2nZlAJ0jfAKAwt5cDvNSbjYkHFBbIfn5DzqSNl_R-9Y/rs:fit:1000:0:0/plain/upload/a51ccd60-d137-468c-9f7b-452d6c5c99d3.jpg@jpg"
+          },
+          {
+            "id": "Location:b0aa039d-b0f4-4aad-9fa8-a888f8a061d4",
+            "name_t": {
+              "de": "Poste de Secours",
+              "en": "Poste de Secours",
+              "fr": "Poste de Secours"
+            },
+            "subtitle_t": {
+              "de": "Green Room",
+              "en": "Green Room",
+              "fr": "Green Room"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28371392062968,
+            "longitude": 2.758715609656008,
+            "map_icon": "MapIcon:ac07048f-61ca-4691-a224-2da014e1b251",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:b0f885b2-014c-4a3f-86e3-8dac1b8dad5a",
+            "name_t": {
+              "de": "Toilettes",
+              "en": "Toilettes",
+              "fr": "Toilettes"
+            },
+            "subtitle_t": {
+              "de": "Le Bastion de la Reine",
+              "en": "Le Bastion de la Reine",
+              "fr": "Le Bastion de la Reine"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.281927041834024,
+            "longitude": 2.760430217867736,
+            "map_icon": "MapIcon:6c284487-7232-40ce-aa56-5d336a74202b",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:b5b2c875-9d62-4604-aec9-48a9eaf89212",
+            "name_t": {
+              "de": "Consignes / Litiges",
+              "en": "Consignes / Litiges",
+              "fr": "Consignes / Litiges"
+            },
+            "subtitle_t": {
+              "de": "Sud",
+              "en": "Sud",
+              "fr": "Sud"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28431623602498,
+            "longitude": 2.7642354039710426,
+            "map_icon": "MapIcon:b0066f8c-0985-4a28-a8fb-5dc66dfb7eae",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:b6fe0fce-a500-4e5c-8565-f9ff13333e3a",
+            "name_t": {
+              "de": "Dolci Focaccia",
+              "en": "Dolci Focaccia",
+              "fr": "Dolci Focaccia"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28358313175406,
+            "longitude": 2.7627141272121207,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/xUBfxepfMddlkSYdi3Te8l-TLXBXFQcg-P8kvbODewg/rs:fit:1000:0:0/plain/upload/9ef8a1f8-f0ed-48db-8f54-a30f7dae0e30.png@jpg"
+          },
+          {
+            "id": "Location:b77753d9-ab05-444f-b8d1-43df32327efc",
+            "name_t": {
+              "de": "Un Amour de Bonbon",
+              "en": "Un Amour de Bonbon",
+              "fr": "Un Amour de Bonbon"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.283860056181794,
+            "longitude": 2.760654990707394,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/G6ePUGPKYpTfzorrrrcoDpGOAYOI_e_5UnIZRe_9jOA/rs:fit:1000:0:0/plain/upload/0cd60d04-e759-4a09-b8a8-5b7742b61051.jpg@jpg"
+          },
+          {
+            "id": "Location:b8783078-adb1-4ae4-98fe-7c37e140afea",
+            "name_t": {
+              "de": "Déconsigne",
+              "en": "Déconsigne",
+              "fr": "Déconsigne"
+            },
+            "subtitle_t": {
+              "de": "Le Square",
+              "en": "Le Square",
+              "fr": "Le Square"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28496059443236,
+            "longitude": 2.7592754161704534,
+            "map_icon": "MapIcon:9f7d404e-29a2-424e-9919-016bb3f9cd83",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:b945e174-6591-49bb-86fc-887959490890",
+            "name_t": {
+              "de": "Hop Hop Food",
+              "en": "Hop Hop Food",
+              "fr": "Hop Hop Food"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.282237216199775,
+            "longitude": 2.761793233165065,
+            "map_icon": "MapIcon:41917888-92eb-4311-8bed-f1974a2df233",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:bbc3b9ec-b3a1-4831-bb06-eb602282529c",
+            "name_t": {
+              "de": "EA Juices",
+              "en": "EA Juices",
+              "fr": "EA Juices"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars",
+              "en": "Bars",
+              "fr": "Bars"
+            },
+            "latitude": 50.28375772174303,
+            "longitude": 2.759628102323319,
+            "map_icon": "MapIcon:ab4b96a8-7cbd-40ed-b5c7-95683ee71719",
+            "image": "https://assets.fragolabs.com/9ro_8lkMAHD4duFGmsUdXpS1JrBEDOd1G0P_RChXUB0/rs:fit:1000:0:0/plain/upload/0e3b247c-63ca-4d4b-a58e-b687cfb5a9f1.jpg@jpg"
+          },
+          {
+            "id": "Location:bd0d2cdd-91c9-44e7-a49e-cd1bf5f64be3",
+            "name_t": {
+              "de": "El Camion",
+              "en": "El Camion",
+              "fr": "El Camion"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.284563642270854,
+            "longitude": 2.7590427886903512,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/gPeRu2PapOT_65NrlvpX2mE394eEz1HvVZe90FtjcAU/rs:fit:1000:0:0/plain/upload/a545eece-9351-4398-a1b9-e5339c230e33.jpg@jpg"
+          },
+          {
+            "id": "Location:bd4635c6-634e-4541-85c7-017417eb6c3b",
+            "name_t": {
+              "de": "Toilettes",
+              "en": "Toilettes",
+              "fr": "Toilettes"
+            },
+            "subtitle_t": {
+              "de": "VIP",
+              "en": "VIP",
+              "fr": "VIP"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28269175302046,
+            "longitude": 2.761212244547721,
+            "map_icon": "MapIcon:6c284487-7232-40ce-aa56-5d336a74202b",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:bf949e71-6efc-42ac-aea8-02de64fca2c4",
+            "name_t": {
+              "de": "La Pomme de Pierre",
+              "en": "La Pomme de Pierre",
+              "fr": "La Pomme de Pierre"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28358893853229,
+            "longitude": 2.7633570867313892,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/g6aJSFb-PwlXZ_nmmNMQSjCM8_hErJfEImnRJXrZsvA/rs:fit:1000:0:0/plain/upload/c55f3f17-1c7c-4056-96e6-6aca2a577f0b.png@jpg"
+          },
+          {
+            "id": "Location:bffe76d3-ac30-40a0-a845-5cbc08c2d9d8",
+            "name_t": {
+              "de": "Plateforme PSH / PMR",
+              "en": "Plateforme PSH / PMR",
+              "fr": "Plateforme PSH / PMR"
+            },
+            "subtitle_t": {
+              "de": "Green Room",
+              "en": "Green Room",
+              "fr": "Green Room"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28393629080912,
+            "longitude": 2.759059340719375,
+            "map_icon": "MapIcon:1c7ee431-5ca4-483b-9571-0cc2e0df6658",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:c0e93d12-592a-4c27-8b13-6567a45b585e",
+            "name_t": {
+              "de": "Village des Associations",
+              "en": "Village des Associations",
+              "fr": "Village des Associations"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28170319468239,
+            "longitude": 2.7602378833898342,
+            "map_icon": "MapIcon:3df70540-eb4f-42a1-ba08-686f10b83f13",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:c5b3ae00-58b9-47fb-8229-8c7be92a43b5",
+            "name_t": {
+              "de": "Tatouages permanents",
+              "en": "Tatouages permanents",
+              "fr": "Tatouages permanents"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Fun & Lifestyle",
+              "en": "Fun & Lifestyle",
+              "fr": "Fun & Lifestyle"
+            },
+            "latitude": 50.28550486566954,
+            "longitude": 2.759335721489549,
+            "map_icon": "MapIcon:0cebb8dc-f579-4c27-acb5-695dad25235d",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:c65eac9f-6f2a-4665-a528-89e08605b882",
+            "name_t": {
+              "de": "Bar Apérol",
+              "en": "Bar Apérol",
+              "fr": "Bar Apérol"
+            },
+            "subtitle_t": {
+              "de": "VIP",
+              "en": "VIP",
+              "fr": "VIP"
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.28270295984606,
+            "longitude": 2.7613961227522736,
+            "map_icon": "MapIcon:0f3e66b4-f5ac-42a8-a348-e97dd14a87ad",
+            "image": "https://assets.fragolabs.com/tsJzVpxIoE3EUVG29Nb7vNC08D9D4tkap9JOm4wVtqQ/rs:fit:1000:0:0/plain/upload/9fbc95f1-4d0d-4a05-96a1-456d75bfbf34.jpg@jpg"
+          },
+          {
+            "id": "Location:cfae8584-c5ac-4b4c-8b76-844bf2bc9ea7",
+            "name_t": {
+              "de": "Bar",
+              "en": "Bar",
+              "fr": "Bar"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars",
+              "en": "Bars",
+              "fr": "Bars"
+            },
+            "latitude": 50.28382241669996,
+            "longitude": 2.7590956198067147,
+            "map_icon": "MapIcon:ab4b96a8-7cbd-40ed-b5c7-95683ee71719",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:d00fead2-275f-42c6-8033-99777f69f151",
+            "name_t": {
+              "de": "Cheesers",
+              "en": "Cheesers",
+              "fr": "Cheesers"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28463557827607,
+            "longitude": 2.759288294379928,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/yrXORL_FrxnIrzwIwFUHmhMIy5z6a0-ZNv2RUSYfuLY/rs:fit:1000:0:0/plain/upload/91d26338-54e4-4dd8-9f20-b2938c029e9e.png@jpg"
+          },
+          {
+            "id": "Location:d2e12833-fbdd-424f-83aa-aac40aeff192",
+            "name_t": {
+              "de": "Superbar Coca-Cola",
+              "en": "Superbar Coca-Cola",
+              "fr": "Superbar Coca-Cola"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28446397402229,
+            "longitude": 2.758702920961724,
+            "map_icon": "MapIcon:0afef0f1-c3db-4fc6-8fea-97305cda3476",
+            "image": "https://assets.fragolabs.com/4HRUYlLUhgsvM9geDyr64j60C4nzpDdiHXdZW13ZoZo/rs:fit:1000:0:0/plain/upload/70edd616-d82c-4f03-be0b-4fc35e0a1d4d.png@jpg"
+          },
+          {
+            "id": "Location:d981af75-e52a-41c1-af7a-b60acdb61b8a",
+            "name_t": {
+              "de": "Bar ",
+              "en": "Bar ",
+              "fr": "Bar "
+            },
+            "subtitle_t": {
+              "de": "Green Room",
+              "en": "Green Room",
+              "fr": "Green Room"
+            },
+            "category_t": {
+              "de": "Bars",
+              "en": "Bars",
+              "fr": "Bars"
+            },
+            "latitude": 50.28455571539823,
+            "longitude": 2.7589874548913826,
+            "map_icon": "MapIcon:ab4b96a8-7cbd-40ed-b5c7-95683ee71719",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:dbc209c5-d476-4f6a-90b5-261b092ca696",
+            "name_t": {
+              "de": "Toilettes",
+              "en": "Toilettes",
+              "fr": "Toilettes"
+            },
+            "subtitle_t": {
+              "de": "Les Remparts - Bar à Vins",
+              "en": "Les Remparts - Bar à Vins",
+              "fr": "Les Remparts - Bar à Vins"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.284762138731764,
+            "longitude": 2.761126729882619,
+            "map_icon": "MapIcon:6c284487-7232-40ce-aa56-5d336a74202b",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:de988681-b559-4ca9-ab8c-91a6a42ead74",
+            "name_t": {
+              "de": "Prenez le temps de souffler - Prévention & Modération",
+              "en": "Prenez le temps de souffler - Prévention & Modération",
+              "fr": "Prenez le temps de souffler - Prévention & Modération"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.28558263321844,
+            "longitude": 2.7587129890822553,
+            "map_icon": "MapIcon:f07683b1-9a24-4811-9c1c-93d6476f7116",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:df484613-ec2d-4396-895e-6e7338f5b63d",
+            "name_t": {
+              "de": "Bar Jack Daniel's",
+              "en": "Bar Jack Daniel's",
+              "fr": "Bar Jack Daniel's"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.28544001690571,
+            "longitude": 2.7596445477045393,
+            "map_icon": "MapIcon:87fbe54f-a339-4d52-a258-be7f0bb9dee0",
+            "image": "https://assets.fragolabs.com/D8ATqwqjBB2A6s6DXnjP2Ix848f8CJsrFHcZDuFCUvI/rs:fit:1000:0:0/plain/upload/487392c2-0714-4a82-b679-0eb5b9ca8105.jpg@jpg"
+          },
+          {
+            "id": "Location:e0636d7d-97f6-44d9-86c8-9802e52dc8c1",
+            "name_t": {
+              "de": "Maboul",
+              "en": "Maboul",
+              "fr": "Maboul"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": null,
+            "longitude": null,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/FSUR3DRBKePzxycyszSBEUudi9u47cRSw4xbk1orlvM/rs:fit:1000:0:0/plain/upload/0b57cf8d-7ddf-47fe-ba51-1547ae23dc2e.png@jpg"
+          },
+          {
+            "id": "Location:e119934b-83f0-4e79-b043-8966c06d55c4",
+            "name_t": {
+              "de": "Nori Nori",
+              "en": "Nori Nori",
+              "fr": "Nori Nori"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.283625719422275,
+            "longitude": 2.7628099329696454,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/WJ6Ux7jyTn3Mrad6olNfa0rQtMEFLkTBjtfRyo7SghY/rs:fit:1000:0:0/plain/upload/30e6c4e0-37ce-4172-b57b-46849d749021.png@jpg"
+          },
+          {
+            "id": "Location:e207dfb6-9800-4871-bcbd-e896ef57db0f",
+            "name_t": {
+              "de": "Caesar Saveurs",
+              "en": "Caesar Saveurs",
+              "fr": "Caesar Saveurs"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.283637173619695,
+            "longitude": 2.759429216789556,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/GyKGzIgqlC0rF3I42snfmi_u4CNlm3sqNVWNID3Q1dg/rs:fit:1000:0:0/plain/upload/46db4101-f764-41dd-918b-26f94049b656.jpg@jpg"
+          },
+          {
+            "id": "Location:e3f59808-a7c5-4c30-9620-a88e45012b80",
+            "name_t": {
+              "de": "Fontaine à eau",
+              "en": "Fontaine à eau",
+              "fr": "Fontaine à eau"
+            },
+            "subtitle_t": {
+              "de": "Le Bastion de la Reine",
+              "en": "Le Bastion de la Reine",
+              "fr": "Le Bastion de la Reine"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.281657001517374,
+            "longitude": 2.7615756160747083,
+            "map_icon": "MapIcon:18f6de93-b3f8-4281-800e-abd499dcf23a",
+            "image": "https://assets.fragolabs.com/SrxBP5OB0iLP-w2rHEn4k3V2-r4VlbR1-vPA8zvhhmA/rs:fit:1000:0:0/plain/upload/500db2d1-da13-44f3-8e2d-fae99683babe.jpg@jpg"
+          },
+          {
+            "id": "Location:e4b8633a-f80a-4ac5-8b1b-c000f65ef4fa",
+            "name_t": {
+              "de": "Toilettes",
+              "en": "Toilettes",
+              "fr": "Toilettes"
+            },
+            "subtitle_t": {
+              "de": "Entrée",
+              "en": "Entrée",
+              "fr": "Entrée"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.284116803844,
+            "longitude": 2.7609023415349156,
+            "map_icon": "MapIcon:6c284487-7232-40ce-aa56-5d336a74202b",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:e5b170a8-bebc-453f-83af-3963c8f1ad0e",
+            "name_t": {
+              "de": "Bar ",
+              "en": "Bar ",
+              "fr": "Bar "
+            },
+            "subtitle_t": {
+              "de": "Main Stage 3",
+              "en": "Main Stage 3",
+              "fr": "Main Stage 3"
+            },
+            "category_t": {
+              "de": "Bars",
+              "en": "Bars",
+              "fr": "Bars"
+            },
+            "latitude": 50.28319288469842,
+            "longitude": 2.761341212590054,
+            "map_icon": "MapIcon:ab4b96a8-7cbd-40ed-b5c7-95683ee71719",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:e7222658-a489-49e7-a288-ac5681944f22",
+            "name_t": {
+              "de": "Granitas",
+              "en": "Granitas",
+              "fr": "Granitas"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28368991167051,
+            "longitude": 2.7590629971844294,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/9Q3nsW7OIcSNN3b8GjwIYmA0-8nF25C1wwmN7-cTUDA/rs:fit:1000:0:0/plain/upload/81e19006-02a1-4f6f-8943-f9c29da9b6a1.png@jpg"
+          },
+          {
+            "id": "Location:e77316e8-065a-4d12-a8f9-1309fdf53320",
+            "name_t": {
+              "de": "Bar",
+              "en": "Bar",
+              "fr": "Bar"
+            },
+            "subtitle_t": {
+              "de": "Main Stage 1",
+              "en": "Main Stage 1",
+              "fr": "Main Stage 1"
+            },
+            "category_t": {
+              "de": "Bars",
+              "en": "Bars",
+              "fr": "Bars"
+            },
+            "latitude": 50.28337872229696,
+            "longitude": 2.7606309434432603,
+            "map_icon": "MapIcon:ab4b96a8-7cbd-40ed-b5c7-95683ee71719",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:eef945e1-5b45-481a-8fd1-5f8845548592",
+            "name_t": {
+              "de": "Inscriptions Tyrolienne et protection auditive",
+              "en": "Inscriptions Tyrolienne et protection auditive",
+              "fr": "Inscriptions Tyrolienne et protection auditive"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Activités",
+              "en": "Activities",
+              "fr": "Activités"
+            },
+            "latitude": 50.282295137863315,
+            "longitude": 2.7617062842901987,
+            "map_icon": "MapIcon:8d116fb2-4eb4-4947-a4a0-d51cc123a6ea",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:efc2092c-1303-4ad4-a6fd-621431cda7e1",
+            "name_t": {
+              "de": "Candi Gaufres",
+              "en": "Candi Gaufres",
+              "fr": "Candi Gaufres"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28501505603393,
+            "longitude": 2.760424428172996,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/bdSkexvaAWL1aErFUKooWmoJRdH_jUaoNQuuZbet_SE/rs:fit:1000:0:0/plain/upload/9181c048-6085-4a7d-b4aa-c09de12b5b2c.jpg@jpg"
+          },
+          {
+            "id": "Location:f04cf090-2143-4ae7-9da1-c76c2b0d7702",
+            "name_t": {
+              "de": "Sam'Régal",
+              "en": "Sam'Régal",
+              "fr": "Sam'Régal"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28458829573944,
+            "longitude": 2.759165658067161,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/dU7QUnD8yqHllVgnCWVYWd0BLs2lbf4O4XVKzRG5iOw/rs:fit:1000:0:0/plain/upload/45a0f411-737e-4770-b760-402d05d042ad.jpg@jpg"
+          },
+          {
+            "id": "Location:f16ce9fe-f825-41b9-b5a9-2b0524105844",
+            "name_t": {
+              "de": "SL Cook",
+              "en": "SL Cook",
+              "fr": "SL Cook"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28279224552625,
+            "longitude": 2.761412504378228,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/SlbFqtsWa9k4Eh7Qj9XpYKe4AmJplNNO9cyo_UJ-tiU/rs:fit:1000:0:0/plain/upload/615768af-4cb0-452e-bf91-4857b2ec793b.jpg@jpg"
+          },
+          {
+            "id": "Location:f3fcd193-333c-4019-a866-4d10c475638a",
+            "name_t": {
+              "de": "Chicken Avenue",
+              "en": "Chicken Avenue",
+              "fr": "Chicken Avenue"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.283666977755644,
+            "longitude": 2.759377317611353,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/hzFXmsnvcSWwYK1XHlrNGWZ8DH51mqnRYF7XIVyz7RY/rs:fit:1000:0:0/plain/upload/5bb833bd-78e9-453c-9988-318372d07679.jpg@jpg"
+          },
+          {
+            "id": "Location:f4dd27e0-ab99-4a17-b41c-b819a7971988",
+            "name_t": {
+              "de": "Entrée VIP",
+              "en": "Entrée VIP",
+              "fr": "Entrée VIP"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "VIP",
+              "en": "VIP",
+              "fr": "VIP"
+            },
+            "latitude": 50.28428650848474,
+            "longitude": 2.7649915056831276,
+            "map_icon": "MapIcon:6f0f3f86-0a49-4edc-9f63-d75795bbc99f",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:f506d445-5cb2-46ef-9eb8-200bad887959",
+            "name_t": {
+              "de": "Maison Bulle",
+              "en": "Maison Bulle",
+              "fr": "Maison Bulle"
+            },
+            "subtitle_t": {
+              "de": "Cocon mental",
+              "en": "Cocon mental",
+              "fr": "Cocon mental"
+            },
+            "category_t": {
+              "de": "Services",
+              "en": "Services",
+              "fr": "Services"
+            },
+            "latitude": 50.28579494340465,
+            "longitude": 2.7592455629091432,
+            "map_icon": "MapIcon:e589cd18-af14-4b49-9beb-d1b193ac7e50",
+            "image": "https://assets.fragolabs.com/fz1dftqAPmbC67fw_QEekAi1H0TJPDlOQav6nPfbmyQ/rs:fit:1000:0:0/plain/upload/e0781e6b-30ed-4baf-a118-dffaf598ebda.jpg@jpg"
+          },
+          {
+            "id": "Location:f6414ac1-fb9c-47a6-86e7-2bf7b673b8ac",
+            "name_t": {
+              "de": "Bar Régional",
+              "en": "Bar Régional",
+              "fr": "Bar Régional"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.28142856849723,
+            "longitude": 2.7605032567894057,
+            "map_icon": "MapIcon:11c9ff9d-7bd4-45b4-a7b1-63d8a0de0985",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:f724ba22-1db2-4bff-b1b3-eaaaf7591db6",
+            "name_t": {
+              "de": "Porzione Di Capri",
+              "en": "Porzione Di Capri",
+              "fr": "Porzione Di Capri"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.283906777197814,
+            "longitude": 2.7594533670059604,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/QQNZzo5FkeoHi1xglvZ74b1HrnUnKV_silfoeUp6LOc/rs:fit:1000:0:0/plain/upload/2d311ac0-0035-44c9-979f-4490c2cade10.png@jpg"
+          },
+          {
+            "id": "Location:f7365466-9bca-4f9d-8fd4-739b367c249f",
+            "name_t": {
+              "de": "Candy Salt",
+              "en": "Candy Salt",
+              "fr": "Candy Salt"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.2839796723749,
+            "longitude": 2.7604909122952677,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/rGcJXXfnlUmmJN4xuyjt33rNmmXXLAoQ7dDe93LLcco/rs:fit:1000:0:0/plain/upload/83256cbf-2275-4424-a260-6b9d6b77e800.jpg@jpg"
+          },
+          {
+            "id": "Location:fa59157a-61e6-4cfb-b60c-50fdc5b8facd",
+            "name_t": {
+              "de": "France Terroir",
+              "en": "France Terroir",
+              "fr": "France Terroir"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28149963755584,
+            "longitude": 2.7604998517782917,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/Z0ewpxcx4Ite9YIi4XeiF1Yzoiu1lbaNb0VJFBI9izY/rs:fit:1000:0:0/plain/upload/74e56bf7-1a13-478b-8692-87f96ab4cf9f.jpg@jpg"
+          },
+          {
+            "id": "Location:fc604b5e-1fae-4a30-ba2c-9046c70651e4",
+            "name_t": {
+              "de": "French Toque",
+              "en": "French Toque",
+              "fr": "French Toque"
+            },
+            "subtitle_t": {
+              "de": "Green Room",
+              "en": "Green Room",
+              "fr": "Green Room"
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.28472151917197,
+            "longitude": 2.7595880475995784,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/ZnA1XdS2jA7gg7ZA-T4pjusFUQ1B_HTA-dZZ2PWRo2Q/rs:fit:1000:0:0/plain/upload/677af480-bc0a-43ce-af28-8c305dd2d585.jpg@jpg"
+          },
+          {
+            "id": "Location:fda5afe9-13fb-4419-9c10-c45b2fec2241",
+            "name_t": {
+              "de": "Tomate Cerise",
+              "en": "Tomate Cerise",
+              "fr": "Tomate Cerise"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food"
+            },
+            "latitude": 50.281595507893854,
+            "longitude": 2.761474601273534,
+            "map_icon": "MapIcon:70680de1-92cb-4762-875e-c99642fc0d9c",
+            "image": "https://assets.fragolabs.com/nf463ltbB4y1SN_iUk6EQ-_nuUu8Bpq8pQ2PswUduKw/rs:fit:1000:0:0/plain/upload/f49dd832-faf5-400c-aefa-b7f12fffbbf6.jpg@jpg"
+          },
+          {
+            "id": "Location:ff1f7897-3e06-4a4d-838a-e5e94192088d",
+            "name_t": {
+              "de": "Bar à mojito",
+              "en": "Bar à mojito",
+              "fr": "Bar à mojito"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.282696886116895,
+            "longitude": 2.7606450310771606,
+            "map_icon": "MapIcon:9df341bc-7a10-4a4a-ac7f-5d48be54f421",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          },
+          {
+            "id": "Location:ffa72e0e-88d6-43f1-b2c4-7a2219e52eb1",
+            "name_t": {
+              "de": "Bar à mojito",
+              "en": "Bar à mojito",
+              "fr": "Bar à mojito"
+            },
+            "subtitle_t": {
+              "de": "",
+              "en": "",
+              "fr": ""
+            },
+            "category_t": {
+              "de": "Bars à thème",
+              "en": "Bars à thème",
+              "fr": "Bars à thème"
+            },
+            "latitude": 50.283916957896764,
+            "longitude": 2.7595000989292657,
+            "map_icon": "MapIcon:9df341bc-7a10-4a4a-ac7f-5d48be54f421",
+            "image": "https://assets.fragolabs.com/npyVGpQPAy0pOS9H6ICKD9TK8omQy43ZrGBcNsHnjvA/rs:fit:1000:0:0/plain/upload/8e6d0a1c-2bc2-4378-a40c-dceca592f216.jpg@jpg"
+          }
+        ]
+      }
+    }
+  }
+}
