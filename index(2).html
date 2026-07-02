@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Plan du Festival — Carte interactive</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#151a23">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="FestivalMap">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#151a23;
+    --ink-soft:#20283a;
+    --paper:#fbebc0;
+    --coral:#ff5a5f;
+    --coral-dark:#e1454a;
+    --sun:#ffc93c;
+    --teal:#2fb6a6;
+    --line: rgba(255,255,255,0.12);
+    --white:#f7f3e9;
+    --shadow: 0 10px 30px rgba(10,12,20,0.35);
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;margin:0;padding:0;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--ink);
+    color:var(--white);
+    overflow:hidden;
+  }
+  #map{position:absolute;inset:0;}
+
+  .maplibregl-ctrl-top-right{ top: calc(96px + var(--safe-top)); }
+  .maplibregl-ctrl-group{ background: var(--ink-soft) !important; border:1px solid var(--line); box-shadow: var(--shadow) !important; }
+  .maplibregl-ctrl-group button{ filter: invert(1) brightness(1.6); }
+  .maplibregl-ctrl-attrib{ display:none; }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:absolute; top:0; left:0; right:0;
+    padding: calc(12px + var(--safe-top)) 12px 10px;
+    z-index:5;
+    background: linear-gradient(180deg, rgba(15,18,26,0.92) 0%, rgba(15,18,26,0.65) 70%, rgba(15,18,26,0) 100%);
+    pointer-events:none;
+  }
+  .topbar > *{ pointer-events:auto; }
+  .brand-row{
+    display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px;
+  }
+  .brand{
+    font-family:'Anton', sans-serif;
+    letter-spacing:0.5px;
+    font-size:22px;
+    line-height:1;
+    color:var(--white);
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .brand span{ color:var(--coral); }
+  .lang-switch{
+    display:flex; background:rgba(21,26,35,0.85); border:1px solid var(--line);
+    border-radius:999px; padding:3px; gap:2px; backdrop-filter: blur(6px);
+  }
+  .lang-switch button{
+    border:none; background:transparent; color:rgba(247,243,233,0.55);
+    font:700 11px/1 'Inter'; padding:7px 10px; border-radius:999px; cursor:pointer;
+    letter-spacing:0.5px;
+  }
+  .lang-switch button.active{ background:var(--coral); color:#1a0f0f; }
+
+  .install-pill{
+    display:flex; align-items:center; gap:6px; align-self:flex-start;
+    background: var(--teal); color:#0d1f1c; border:none; border-radius:999px;
+    font:800 12px/1 'Inter'; padding:9px 14px; margin-bottom:10px; cursor:pointer;
+    box-shadow: var(--shadow);
+  }
+
+  .search-row{ display:flex; gap:8px; }
+  .search-box{
+    flex:1; position:relative;
+    background: rgba(21,26,35,0.9);
+    border:1px solid var(--line);
+    border-radius:14px;
+    backdrop-filter: blur(6px);
+    box-shadow: var(--shadow);
+  }
+  .search-box input{
+    width:100%; background:transparent; border:none; outline:none;
+    color:var(--white); font:600 15px/1 'Inter'; padding:14px 40px 14px 42px;
+  }
+  .search-box input::placeholder{ color:rgba(247,243,233,0.4); }
+  .search-icon{
+    position:absolute; left:14px; top:50%; transform:translateY(-50%);
+    font-size:16px; opacity:0.6;
+  }
+  .search-clear{
+    position:absolute; right:8px; top:50%; transform:translateY(-50%);
+    background:rgba(255,255,255,0.08); border:none; color:var(--white);
+    width:26px; height:26px; border-radius:50%; cursor:pointer; font-size:14px; display:none;
+  }
+  .search-box.has-text .search-clear{ display:block; }
+
+  .list-toggle{
+    width:48px; flex:0 0 48px;
+    background: rgba(21,26,35,0.9); border:1px solid var(--line); border-radius:14px;
+    color:var(--white); font-size:18px; cursor:pointer; box-shadow: var(--shadow);
+  }
+
+  .suggestions{
+    margin-top:8px; background: rgba(21,26,35,0.97); border:1px solid var(--line);
+    border-radius:14px; max-height:52vh; overflow-y:auto; box-shadow:var(--shadow);
+    display:none;
+  }
+  .suggestions.show{ display:block; }
+  .sugg-item{
+    display:flex; align-items:center; gap:10px; padding:10px 12px; cursor:pointer;
+    border-bottom:1px solid var(--line);
+  }
+  .sugg-item:last-child{ border-bottom:none; }
+  .sugg-item:active, .sugg-item:hover{ background: rgba(255,255,255,0.05); }
+  .sugg-badge{
+    width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:14px; flex:0 0 28px; box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  }
+  .sugg-text{ flex:1; min-width:0; }
+  .sugg-name{ font-weight:700; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .sugg-cat{ font-size:11px; color:rgba(247,243,233,0.5); }
+
+  .chips-row{
+    display:flex; gap:8px; overflow-x:auto; margin-top:10px; padding-bottom:2px;
+    scrollbar-width:none;
+  }
+  .chips-row::-webkit-scrollbar{ display:none; }
+  .chip{
+    flex:0 0 auto; display:flex; align-items:center; gap:6px;
+    background: rgba(21,26,35,0.85); border:1px solid var(--line);
+    color: rgba(247,243,233,0.75); font:700 12px/1 'Inter'; letter-spacing:0.2px;
+    padding:8px 12px; border-radius:999px; cursor:pointer; white-space:nowrap;
+    backdrop-filter: blur(6px); transition: transform .12s ease;
+  }
+  .chip:active{ transform: scale(0.96); }
+  .chip.active{ background:var(--white); color:var(--ink); border-color:var(--white); }
+  .chip .dot{ width:8px; height:8px; border-radius:50%; flex:0 0 8px; }
+
+  /* ---------- FAB stack ---------- */
+  .fab-stack{
+    position:absolute; right:12px; bottom: calc(24px + var(--safe-bottom)); z-index:5;
+    display:flex; flex-direction:column; gap:10px; align-items:center;
+  }
+  .fab{
+    width:50px; height:50px; border-radius:50%; border:1px solid var(--line);
+    background: var(--ink-soft); color:var(--white); font-size:20px;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    box-shadow: var(--shadow);
+  }
+  .fab.primary{ background:var(--coral); border-color:var(--coral-dark); }
+  .fab.primary.tracking{ background:var(--teal); border-color:var(--teal); }
+  .fab.follow-active{ background:var(--teal); border-color:var(--teal); box-shadow: 0 0 0 4px rgba(47,182,166,0.25), var(--shadow); }
+  .fab:active{ transform: scale(0.94); }
+
+  /* ---------- Bottom sheet (POI detail) ---------- */
+  .sheet-backdrop{
+    position:absolute; inset:0; background: rgba(10,12,18,0.45);
+    opacity:0; pointer-events:none; transition: opacity .2s ease; z-index:6;
+  }
+  .sheet-backdrop.show{ opacity:1; pointer-events:auto; }
+
+  .sheet{
+    position:absolute; left:0; right:0; bottom:0; z-index:7;
+    background: var(--ink-soft);
+    border-top:1px solid var(--line);
+    border-radius:20px 20px 0 0;
+    box-shadow: 0 -12px 30px rgba(0,0,0,0.45);
+    transform: translateY(105%);
+    transition: transform .28s cubic-bezier(.2,.8,.3,1);
+    padding: 10px 18px calc(20px + var(--safe-bottom));
+    max-height:62vh; overflow-y:auto;
+  }
+  .sheet.show{ transform: translateY(0); }
+  .sheet-handle{ width:40px; height:4px; border-radius:2px; background:var(--line); margin: 0 auto 14px; }
+  .sheet-top{ display:flex; gap:14px; align-items:flex-start; }
+  .sheet-thumb{
+    width:76px; height:76px; border-radius:14px; object-fit:cover; flex:0 0 76px;
+    background: rgba(255,255,255,0.06); border:1px solid var(--line);
+  }
+  .sheet-badge{
+    display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px;
+    font:800 11px/1 'Inter'; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:6px;
+  }
+  .sheet-title{ font-family:'Anton', sans-serif; font-size:22px; line-height:1.1; letter-spacing:0.3px; }
+  .sheet-sub{ font-size:13px; color:rgba(247,243,233,0.6); margin-top:4px; }
+  .sheet-close{
+    margin-left:auto; width:32px; height:32px; border-radius:50%; border:none;
+    background: rgba(255,255,255,0.08); color:var(--white); font-size:16px; cursor:pointer; flex:0 0 32px;
+  }
+  .sheet-actions{ display:flex; gap:10px; margin-top:16px; }
+  .sheet-btn{
+    flex:1; border:none; border-radius:12px; padding:12px; font:700 13px/1 'Inter';
+    cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+  .sheet-btn.go{ background:var(--coral); color:#1a0f0f; }
+  .sheet-btn.nav{ background:var(--teal); color:#0d1f1c; }
+  .sheet-btn.ghost{ background: rgba(255,255,255,0.08); color:var(--white); }
+
+  /* ---------- Navigation HUD ---------- */
+  .nav-hud{
+    position:absolute; left:12px; right:12px; top: calc(190px + var(--safe-top));
+    z-index:6; background: var(--ink-soft); border:1px solid var(--line);
+    border-radius:18px; box-shadow: var(--shadow);
+    padding:14px 16px; display:none; align-items:center; gap:14px;
+  }
+  .nav-hud.show{ display:flex; }
+  .nav-arrow-wrap{
+    width:52px; height:52px; border-radius:50%; background: rgba(47,182,166,0.15);
+    border:2px solid var(--teal); display:flex; align-items:center; justify-content:center; flex:0 0 52px;
+  }
+  .nav-arrow{ font-size:24px; transition: transform .25s ease; display:inline-block; color:var(--teal); }
+  .nav-info{ flex:1; min-width:0; }
+  .nav-dest{ font-family:'Anton'; font-size:16px; letter-spacing:0.3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .nav-meta{ font-size:12px; color:rgba(247,243,233,0.6); margin-top:2px; display:flex; gap:8px; align-items:center; }
+  .nav-close{
+    width:32px; height:32px; border-radius:50%; border:none; background:rgba(255,255,255,0.08);
+    color:var(--white); font-size:15px; cursor:pointer; flex:0 0 32px;
+  }
+  .nav-hud.arrived .nav-arrow-wrap{ background: rgba(255,201,60,0.18); border-color: var(--sun); }
+  .nav-hud.arrived .nav-arrow{ color:var(--sun); }
+  .nav-compass-hint{ font-size:10px; color:rgba(247,243,233,0.4); margin-top:2px; }
+
+  /* ---------- List panel ---------- */
+  .list-panel{
+    position:absolute; top:0; bottom:0; left:0; width:min(340px, 86vw);
+    background: var(--ink-soft); border-right:1px solid var(--line); z-index:8;
+    transform: translateX(-105%); transition: transform .25s ease;
+    padding-top: calc(14px + var(--safe-top));
+    display:flex; flex-direction:column;
+  }
+  .list-panel.show{ transform: translateX(0); }
+  .list-panel-head{ display:flex; align-items:center; justify-content:space-between; padding: 0 16px 12px; border-bottom:1px solid var(--line); }
+  .list-panel-head h2{ font-family:'Anton'; font-size:20px; margin:0; font-weight:400; }
+  .list-panel-close{ background:rgba(255,255,255,0.08); border:none; color:var(--white); width:30px;height:30px;border-radius:50%; cursor:pointer; }
+  .list-scroll{ overflow-y:auto; flex:1; }
+  .list-group-title{
+    padding: 12px 16px 6px; font:800 11px/1 'Inter'; letter-spacing:0.6px; text-transform:uppercase;
+    color:rgba(247,243,233,0.45);
+  }
+
+  .toast{
+    position:absolute; left:50%; bottom: calc(90px + var(--safe-bottom)); transform: translateX(-50%) translateY(20px);
+    background: var(--ink-soft); border:1px solid var(--line); color:var(--white);
+    padding:10px 16px; border-radius:12px; font-size:13px; box-shadow:var(--shadow);
+    z-index:9; opacity:0; pointer-events:none; transition: all .25s ease;
+  }
+  .toast.show{ opacity:1; transform: translateX(-50%) translateY(0); }
+
+  /* ---------- Loading ---------- */
+  .loading{
+    position:absolute; inset:0; background: var(--ink); z-index:20;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+    transition: opacity .4s ease, visibility .4s ease;
+  }
+  .loading.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+  .loading .brand{ font-size:30px; }
+  .spinner{
+    width:34px; height:34px; border-radius:50%;
+    border:3px solid rgba(255,255,255,0.15); border-top-color: var(--coral);
+    animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin{ to{ transform: rotate(360deg); } }
+
+  /* ---------- Markers ---------- */
+  .poi-marker{
+    width:32px; height:32px; border-radius:50% 50% 50% 4px; transform: rotate(45deg);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.5); border:2px solid rgba(255,255,255,0.85);
+    cursor:pointer; transition: transform .15s ease;
+  }
+  .poi-marker .emoji{ transform: rotate(-45deg); font-size:15px; }
+  .poi-marker.dim{ opacity:0.18; }
+  .poi-marker:hover{ transform: rotate(45deg) scale(1.12); }
+
+  .user-marker{ width:22px; height:22px; position:relative; }
+  .user-marker .dot{
+    width:16px; height:16px; border-radius:50%; background:var(--teal);
+    border:3px solid white; box-shadow:0 0 0 2px rgba(47,182,166,0.4);
+    position:absolute; top:3px; left:3px;
+  }
+  .user-marker .pulse{
+    position:absolute; inset:0; border-radius:50%; background: rgba(47,182,166,0.45);
+    animation: pulse 1.8s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{ transform: scale(0.4); opacity:0.8; }
+    100%{ transform: scale(2.6); opacity:0; }
+  }
+
+  @media (min-width: 720px){
+    .topbar{ padding-left:16px; padding-right:16px; }
+    .brand-row{ margin-bottom:12px; }
+    .search-row{ max-width:520px; }
+    .list-panel{ width:360px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<!-- Loading -->
+<div class="loading" id="loading">
+  <div class="brand">FESTIVAL<span>MAP</span></div>
+  <div class="spinner"></div>
+</div>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="brand-row">
+    <div class="brand">FESTIVAL<span>MAP</span></div>
+    <div class="lang-switch" id="langSwitch">
+      <button data-lang="fr" class="active">FR</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="de">DE</button>
+    </div>
+  </div>
+  <button class="install-pill" id="installBtn" style="display:none;">⬇️ Installer l'app</button>
+  <div class="search-row">
+    <button class="list-toggle" id="listToggleBtn" title="Liste des points d'intérêt">☰</button>
+    <div class="search-box" id="searchBox">
+      <span class="search-icon">🔍</span>
+      <input id="searchInput" type="text" placeholder="Chercher un stand, un bar, une scène…" autocomplete="off">
+      <button class="search-clear" id="searchClear">✕</button>
+    </div>
+  </div>
+  <div class="suggestions" id="suggestions"></div>
+  <div class="chips-row" id="chipsRow"></div>
+</div>
+
+<!-- FABs -->
+<div class="fab-stack">
+  <button class="fab" id="compassFab" title="Réorienter la carte vers le nord">🧭</button>
+  <button class="fab" id="followFab" title="Suivre ma position et mon orientation">🎯</button>
+  <button class="fab primary" id="locateFab" title="Me localiser">📍</button>
+</div>
+
+<!-- List panel -->
+<div class="list-panel" id="listPanel">
+  <div class="list-panel-head">
+    <h2>Points d'intérêt</h2>
+    <button class="list-panel-close" id="listPanelClose">✕</button>
+  </div>
+  <div class="list-scroll" id="listScroll"></div>
+</div>
+
+<!-- Sheet -->
+<div class="sheet-backdrop" id="sheetBackdrop"></div>
+<div class="sheet" id="sheet">
+  <div class="sheet-handle"></div>
+  <div class="sheet-top">
+    <img class="sheet-thumb" id="sheetThumb" src="" alt="">
+    <div style="flex:1; min-width:0;">
+      <div class="sheet-badge" id="sheetBadge"></div>
+      <div class="sheet-title" id="sheetTitle"></div>
+      <div class="sheet-sub" id="sheetSub"></div>
+    </div>
+    <button class="sheet-close" id="sheetClose">✕</button>
+  </div>
+  <div class="sheet-actions">
+    <button class="sheet-btn go" id="sheetGo">🎯 Centrer</button>
+    <button class="sheet-btn nav" id="sheetNav">🧭 Y aller</button>
+    <button class="sheet-btn ghost" id="sheetShare">📤 Partager</button>
+  </div>
+</div>
+
+<!-- Navigation HUD -->
+<div class="nav-hud" id="navHud">
+  <div class="nav-arrow-wrap"><span class="nav-arrow" id="navArrow">⬆</span></div>
+  <div class="nav-info">
+    <div class="nav-dest" id="navDest"></div>
+    <div class="nav-meta"><span id="navDistance"></span><span id="navEta"></span></div>
+    <div class="nav-compass-hint" id="navHint"></div>
+  </div>
+  <button class="nav-close" id="navClose">✕</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  // ---------------------------------------------------------------
+  // Config
+  // ---------------------------------------------------------------
+  const POIS_URL = "https://raw.githubusercontent.com/Biskwuit/map/refs/heads/main/pois.json";
+  const TILE_URL = "https://raw.githubusercontent.com/Biskwuit/map/refs/heads/main/e3351a0b-fde5-4dea-88ad-d298e697e8b1.jpg";
+
+  // Quad corners of the site tile, exactly as provided by the source style [lng, lat]
+  const TILE_COORDS = [
+    [2.75593, 50.286918],   // top-left
+    [2.766292, 50.286918],  // top-right
+    [2.766292, 50.280346],  // bottom-right
+    [2.75593, 50.280346]    // bottom-left
+  ];
+  const CENTER = [2.761111, 50.283632];
+  const PAD_LNG = 0.0045, PAD_LAT = 0.0032;
+  const MAX_BOUNDS = [
+    [TILE_COORDS[0][0] - PAD_LNG, TILE_COORDS[2][1] - PAD_LAT],
+    [TILE_COORDS[1][0] + PAD_LNG, TILE_COORDS[0][1] + PAD_LAT]
+  ];
+
+  const CATEGORY_META = {
+    "Food":            { color:"#ff8a3d", icon:"🍔" },
+    "Bars à thème":    { color:"#ff5a5f", icon:"🍹" },
+    "Bars":            { color:"#f2c14e", icon:"🍺" },
+    "Scènes":          { color:"#8b5cf6", icon:"🎤" },
+    "VIP":             { color:"#d4af37", icon:"⭐" },
+    "Activités":       { color:"#2fbf71", icon:"🎡" },
+    "Services":        { color:"#3ab0c3", icon:"ℹ️" },
+    "Merch":           { color:"#ec4899", icon:"🛍️" },
+    "Fun & Lifestyle": { color:"#22d3ee", icon:"💅" }
+  };
+  const DEFAULT_META = { color:"#9ca3af", icon:"📍" };
+
+  const STR = {
+    fr: { placeholder:"Chercher un stand, un bar, une scène…", results:"résultats", noresult:"Aucun résultat", center:"Centrer", share:"Partager", locateOk:"Position trouvée", locateErr:"Impossible d'obtenir votre position", copied:"Lien copié", poiList:"Points d'intérêt",
+          nav:"Y aller", navNeedLoc:"Active ta position pour lancer la navigation", arrived:"Vous êtes arrivé !", walk:"marche", noCompass:"Boussole indisponible — flèche basée sur le nord de la carte", compassOn:"Boussole active" },
+    en: { placeholder:"Search a stall, a bar, a stage…", results:"results", noresult:"No results", center:"Center", share:"Share", locateOk:"Location found", locateErr:"Couldn't get your location", copied:"Link copied", poiList:"Points of interest",
+          nav:"Navigate", navNeedLoc:"Turn on your location to start navigation", arrived:"You've arrived!", walk:"walk", noCompass:"Compass unavailable — arrow based on map north", compassOn:"Compass active" },
+    de: { placeholder:"Stand, Bar oder Bühne suchen…", results:"Ergebnisse", noresult:"Keine Ergebnisse", center:"Zentrieren", share:"Teilen", locateOk:"Standort gefunden", locateErr:"Standort nicht verfügbar", copied:"Link kopiert", poiList:"Points of interest",
+          nav:"Navigieren", navNeedLoc:"Standort aktivieren, um die Navigation zu starten", arrived:"Angekommen!", walk:"Gehzeit", noCompass:"Kompass nicht verfügbar — Pfeil zeigt Kartennorden", compassOn:"Kompass aktiv" }
+  };
+
+  let LANG = "fr";
+  let pois = [];
+  let markers = [];       // { marker, el, item, category, name }
+  let activeCategories = new Set();
+  let userMarker = null;
+  let watchId = null;
+  let locatingInProgress = false;
+  let selectedItem = null;
+
+  // Navigation state
+  let navTarget = null;
+  let navActive = false;
+  let userCoords = null;        // { lat, lng }
+  let compassHeading = null;    // degrees from true/magnetic north, or null if unavailable
+  let compassListenerAttached = false;
+  let routeLayerReady = false;
+
+  // Follow mode (Google-Maps-style heading-up camera lock)
+  let followMode = false;
+  let followInterval = null;
+  let lastFollowCenter = null;
+  let lastFollowBearing = null;
+
+  const $ = (id) => document.getElementById(id);
+
+  function catMeta(cat){ return CATEGORY_META[cat] || DEFAULT_META; }
+  function nameOf(item){
+    const t = item.name_t || {};
+    return t[LANG] || t.fr || t.en || t.de || "—";
+  }
+  function subOf(item){
+    const t = item.subtitle_t || {};
+    return t[LANG] || t.fr || t.en || t.de || "";
+  }
+  function catOf(item){
+    const t = item.category_t || {};
+    return t[LANG] || t.fr || t.en || t.de || "";
+  }
+
+  function showToast(msg){
+    const t = $("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(showToast._h);
+    showToast._h = setTimeout(()=> t.classList.remove("show"), 2400);
+  }
+
+  // ---------------------------------------------------------------
+  // Map init
+  // ---------------------------------------------------------------
+  const map = new maplibregl.Map({
+    container: "map",
+    style: {
+      version: 8,
+      sources: {
+        "overlay-source": {
+          type: "image",
+          url: TILE_URL,
+          coordinates: TILE_COORDS
+        }
+      },
+      layers: [
+        { id:"bg", type:"background", paint:{ "background-color":"#fbebc0" } },
+        { id:"overlay-layer", type:"raster", source:"overlay-source", paint:{ "raster-fade-duration":0 } }
+      ]
+    },
+    center: CENTER,
+    zoom: 17,
+    minZoom: 14.5,
+    maxZoom: 20,
+    pitch: 0,
+    bearing: 0,
+    dragRotate: true,
+    touchZoomRotate: true,
+    attributionControl: false
+  });
+  map.touchZoomRotate.enableRotation();
+  map.addControl(new maplibregl.NavigationControl({ showCompass:true, showZoom:true, visualizePitch:true }), "top-right");
+
+  map.on("load", () => {
+    map.fitBounds([MAX_BOUNDS[0], MAX_BOUNDS[1]], { padding: 20, duration: 0 });
+    setTimeout(()=> map.setMaxBounds(MAX_BOUNDS), 400);
+    loadPois();
+  });
+
+  // ---------------------------------------------------------------
+  // Load POIs
+  // ---------------------------------------------------------------
+  function loadPois(){
+    fetch(POIS_URL)
+      .then(r => r.json())
+      .then(json => {
+        const items = (((json.data||{}).app||{}).module||{}).items || [];
+        pois = items.filter(it => typeof it.latitude === "number" && typeof it.longitude === "number");
+        buildCategoryChips();
+        buildMarkers();
+        buildList();
+        $("loading").classList.add("hide");
+      })
+      .catch(err => {
+        console.error(err);
+        $("loading").classList.add("hide");
+        showToast(LANG === "fr" ? "Impossible de charger les points d'intérêt" : "Could not load points of interest");
+      });
+  }
+
+  function buildCategoryChips(){
+    const counts = {};
+    pois.forEach(it => {
+      const c = catOf(it) || "Autre";
+      counts[c] = (counts[c]||0) + 1;
+    });
+    const cats = Object.keys(counts).sort((a,b)=> counts[b]-counts[a]);
+    activeCategories = new Set(cats);
+    const row = $("chipsRow");
+    row.innerHTML = "";
+    cats.forEach(cat => {
+      const meta = catMeta(cat);
+      const chip = document.createElement("div");
+      chip.className = "chip active";
+      chip.dataset.cat = cat;
+      chip.innerHTML = `<span class="dot" style="background:${meta.color}"></span>${cat} · ${counts[cat]}`;
+      chip.addEventListener("click", () => toggleCategory(cat, chip));
+      row.appendChild(chip);
+    });
+  }
+
+  function toggleCategory(cat, chipEl){
+    if (activeCategories.has(cat)){
+      activeCategories.delete(cat);
+      chipEl.classList.remove("active");
+    } else {
+      activeCategories.add(cat);
+      chipEl.classList.add("active");
+    }
+    applyFilters();
+  }
+
+  // ---------------------------------------------------------------
+  // Markers
+  // ---------------------------------------------------------------
+  function buildMarkers(){
+    pois.forEach(item => {
+      const cat = catOf(item) || "Autre";
+      const meta = catMeta(cat);
+      const el = document.createElement("div");
+      el.className = "poi-marker";
+      el.style.background = meta.color;
+      el.innerHTML = `<span class="emoji">${meta.icon}</span>`;
+      el.addEventListener("click", (e) => { e.stopPropagation(); openSheet(item); });
+
+      const marker = new maplibregl.Marker({ element: el, anchor: "bottom" })
+        .setLngLat([item.longitude, item.latitude])
+        .addTo(map);
+
+      markers.push({ marker, el, item, cat });
+    });
+  }
+
+  function applyFilters(query){
+    const q = (query !== undefined ? query : ($("searchInput").value || "")).trim().toLowerCase();
+    markers.forEach(m => {
+      const catOk = activeCategories.has(m.cat);
+      const name = nameOf(m.item).toLowerCase();
+      const sub = subOf(m.item).toLowerCase();
+      const textOk = !q || name.includes(q) || sub.includes(q) || m.cat.toLowerCase().includes(q);
+      const visible = catOk && textOk;
+      m.el.classList.toggle("dim", !visible);
+      m.el.style.pointerEvents = visible ? "auto" : "none";
+    });
+  }
+
+  // ---------------------------------------------------------------
+  // Search suggestions
+  // ---------------------------------------------------------------
+  const searchInput = $("searchInput");
+  const suggestions = $("suggestions");
+  const searchBox = $("searchBox");
+
+  searchInput.addEventListener("input", () => {
+    const q = searchInput.value.trim();
+    searchBox.classList.toggle("has-text", q.length > 0);
+    applyFilters(q);
+    renderSuggestions(q);
+  });
+  searchInput.addEventListener("focus", () => { if (searchInput.value.trim()) renderSuggestions(searchInput.value.trim()); });
+  $("searchClear").addEventListener("click", () => {
+    searchInput.value = "";
+    searchBox.classList.remove("has-text");
+    suggestions.classList.remove("show");
+    applyFilters("");
+  });
+  document.addEventListener("click", (e) => {
+    if (!suggestions.contains(e.target) && e.target !== searchInput) suggestions.classList.remove("show");
+  });
+
+  function renderSuggestions(q){
+    if (!q){ suggestions.classList.remove("show"); return; }
+    const ql = q.toLowerCase();
+    const matches = pois.filter(it => nameOf(it).toLowerCase().includes(ql)).slice(0, 12);
+    if (!matches.length){
+      suggestions.innerHTML = `<div class="sugg-item" style="cursor:default;opacity:.6">${STR[LANG].noresult}</div>`;
+      suggestions.classList.add("show");
+      return;
+    }
+    suggestions.innerHTML = "";
+    matches.forEach(item => {
+      const cat = catOf(item);
+      const meta = catMeta(cat);
+      const row = document.createElement("div");
+      row.className = "sugg-item";
+      row.innerHTML = `
+        <div class="sugg-badge" style="background:${meta.color}">${meta.icon}</div>
+        <div class="sugg-text">
+          <div class="sugg-name">${nameOf(item)}</div>
+          <div class="sugg-cat">${cat}</div>
+        </div>`;
+      row.addEventListener("click", () => {
+        suggestions.classList.remove("show");
+        flyToItem(item);
+        openSheet(item);
+      });
+      suggestions.appendChild(row);
+    });
+    suggestions.classList.add("show");
+  }
+
+  function flyToItem(item){
+    map.flyTo({ center:[item.longitude, item.latitude], zoom: Math.max(map.getZoom(), 18), pitch:0, bearing: map.getBearing(), duration:900 });
+  }
+
+  // ---------------------------------------------------------------
+  // Bottom sheet
+  // ---------------------------------------------------------------
+  const sheet = $("sheet");
+  const sheetBackdrop = $("sheetBackdrop");
+
+  function openSheet(item){
+    selectedItem = item;
+    const cat = catOf(item);
+    const meta = catMeta(cat);
+    $("sheetThumb").src = item.image || "";
+    $("sheetThumb").style.display = item.image ? "block" : "none";
+    $("sheetBadge").textContent = `${meta.icon} ${cat}`;
+    $("sheetBadge").style.background = meta.color + "26";
+    $("sheetBadge").style.color = meta.color;
+    $("sheetTitle").textContent = nameOf(item);
+    $("sheetSub").textContent = subOf(item);
+    sheet.classList.add("show");
+    sheetBackdrop.classList.add("show");
+  }
+  function closeSheet(){
+    sheet.classList.remove("show");
+    sheetBackdrop.classList.remove("show");
+    selectedItem = null;
+  }
+  $("sheetClose").addEventListener("click", closeSheet);
+  sheetBackdrop.addEventListener("click", closeSheet);
+  $("sheetGo").addEventListener("click", () => { if (selectedItem) flyToItem(selectedItem); });
+  $("sheetNav").addEventListener("click", () => { if (selectedItem) startNavigation(selectedItem); });
+  $("sheetShare").addEventListener("click", () => {
+    if (!selectedItem) return;
+    const url = `${location.origin}${location.pathname}?poi=${encodeURIComponent(selectedItem.id||"")}`;
+    if (navigator.share){
+      navigator.share({ title: nameOf(selectedItem), url }).catch(()=>{});
+    } else if (navigator.clipboard){
+      navigator.clipboard.writeText(url).then(()=> showToast(STR[LANG].copied));
+    }
+  });
+
+  // ---------------------------------------------------------------
+  // List panel
+  // ---------------------------------------------------------------
+  const listPanel = $("listPanel");
+  $("listToggleBtn").addEventListener("click", () => listPanel.classList.add("show"));
+  $("listPanelClose").addEventListener("click", () => listPanel.classList.remove("show"));
+
+  function buildList(){
+    const byCat = {};
+    pois.forEach(it => {
+      const c = catOf(it) || "Autre";
+      (byCat[c] = byCat[c] || []).push(it);
+    });
+    const cats = Object.keys(byCat).sort((a,b)=> byCat[b].length - byCat[a].length);
+    const wrap = $("listScroll");
+    wrap.innerHTML = "";
+    cats.forEach(cat => {
+      const meta = catMeta(cat);
+      const title = document.createElement("div");
+      title.className = "list-group-title";
+      title.textContent = `${cat} (${byCat[cat].length})`;
+      wrap.appendChild(title);
+      byCat[cat].sort((a,b)=> nameOf(a).localeCompare(nameOf(b))).forEach(item => {
+        const row = document.createElement("div");
+        row.className = "sugg-item";
+        row.innerHTML = `
+          <div class="sugg-badge" style="background:${meta.color}">${meta.icon}</div>
+          <div class="sugg-text"><div class="sugg-name">${nameOf(item)}</div></div>`;
+        row.addEventListener("click", () => {
+          listPanel.classList.remove("show");
+          flyToItem(item);
+          openSheet(item);
+        });
+        wrap.appendChild(row);
+      });
+    });
+  }
+
+  // ---------------------------------------------------------------
+  // Language switch
+  // ---------------------------------------------------------------
+  $("langSwitch").addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-lang]");
+    if (!btn) return;
+    LANG = btn.dataset.lang;
+    [...$("langSwitch").children].forEach(b => b.classList.toggle("active", b === btn));
+    searchInput.placeholder = STR[LANG].placeholder;
+    buildCategoryChips();
+    applyFilters();
+    buildList();
+    if (selectedItem) openSheet(selectedItem);
+  });
+  searchInput.placeholder = STR[LANG].placeholder;
+
+  // ---------------------------------------------------------------
+  // Compass reset
+  // ---------------------------------------------------------------
+  $("compassFab").addEventListener("click", () => {
+    disableFollow();
+    map.easeTo({ bearing:0, pitch:0, duration:500 });
+  });
+
+  // ---------------------------------------------------------------
+  // Geolocation waypoint
+  // ---------------------------------------------------------------
+  const locateFab = $("locateFab");
+  locateFab.addEventListener("click", () => {
+    if (!navigator.geolocation){
+      showToast(STR[LANG].locateErr);
+      return;
+    }
+    if (watchId !== null){
+      // toggle off tracking
+      navigator.geolocation.clearWatch(watchId);
+      watchId = null;
+      locateFab.classList.remove("tracking");
+      if (followMode) disableFollow();
+      if (navActive) stopNavigation();
+      return;
+    }
+    if (locatingInProgress) return;
+    locatingInProgress = true;
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        locatingInProgress = false;
+        placeUserMarker(pos.coords);
+        map.flyTo({ center:[pos.coords.longitude, pos.coords.latitude], zoom:18, duration:900 });
+        showToast(STR[LANG].locateOk);
+        locateFab.classList.add("tracking");
+        watchId = navigator.geolocation.watchPosition(
+          (p) => placeUserMarker(p.coords),
+          () => {},
+          { enableHighAccuracy:true, maximumAge:5000 }
+        );
+      },
+      () => { locatingInProgress = false; showToast(STR[LANG].locateErr); },
+      { enableHighAccuracy:true, timeout:8000 }
+    );
+  });
+
+  function placeUserMarker(coords){
+    userCoords = { lat: coords.latitude, lng: coords.longitude };
+    if (!userMarker){
+      const el = document.createElement("div");
+      el.className = "user-marker";
+      el.innerHTML = `<div class="pulse"></div><div class="dot"></div>`;
+      userMarker = new maplibregl.Marker({ element: el, anchor:"center" })
+        .setLngLat([coords.longitude, coords.latitude])
+        .addTo(map);
+    } else {
+      userMarker.setLngLat([coords.longitude, coords.latitude]);
+    }
+    if (navActive) updateNavigation();
+  }
+
+  // ---------------------------------------------------------------
+  // Navigation engine (direct-line guidance — the festival grounds
+  // have no routable path graph, so we guide "as the crow flies"
+  // with live distance + a heading-aware compass arrow)
+  // ---------------------------------------------------------------
+  const EARTH_R = 6371000;
+  function toRad(d){ return d * Math.PI / 180; }
+  function toDeg(r){ return r * 180 / Math.PI; }
+
+  function haversine(a, b){
+    const dLat = toRad(b.lat - a.lat);
+    const dLng = toRad(b.lng - a.lng);
+    const s = Math.sin(dLat/2)**2 + Math.cos(toRad(a.lat))*Math.cos(toRad(b.lat))*Math.sin(dLng/2)**2;
+    return 2 * EARTH_R * Math.asin(Math.sqrt(s));
+  }
+  function bearingTo(a, b){
+    const y = Math.sin(toRad(b.lng-a.lng)) * Math.cos(toRad(b.lat));
+    const x = Math.cos(toRad(a.lat))*Math.sin(toRad(b.lat)) - Math.sin(toRad(a.lat))*Math.cos(toRad(b.lat))*Math.cos(toRad(b.lng-a.lng));
+    return (toDeg(Math.atan2(y, x)) + 360) % 360;
+  }
+
+  function ensureRouteLayer(){
+    if (routeLayerReady) return;
+    map.addSource("route-source", {
+      type: "geojson",
+      data: { type:"Feature", geometry:{ type:"LineString", coordinates:[] } }
+    });
+    map.addLayer({
+      id: "route-line",
+      type: "line",
+      source: "route-source",
+      layout: { "line-cap":"round", "line-join":"round" },
+      paint: {
+        "line-color": "#2fb6a6",
+        "line-width": 4,
+        "line-dasharray": [0.2, 1.6],
+        "line-opacity": 0.9
+      }
+    });
+    routeLayerReady = true;
+  }
+
+  function setRouteLine(a, b){
+    ensureRouteLayer();
+    const src = map.getSource("route-source");
+    if (src){
+      src.setData({ type:"Feature", geometry:{ type:"LineString", coordinates:[[a.lng,a.lat],[b.lng,b.lat]] } });
+    }
+  }
+  function clearRouteLine(){
+    if (routeLayerReady){
+      map.getSource("route-source").setData({ type:"Feature", geometry:{ type:"LineString", coordinates:[] } });
+    }
+  }
+
+  function formatDistance(m){
+    if (m < 1000) return `${Math.round(m)} m`;
+    return `${(m/1000).toFixed(1)} km`;
+  }
+  function formatEta(m){
+    // average walking speed ~ 1.3 m/s across a crowded festival site
+    const mins = Math.max(1, Math.round(m / 1.3 / 60));
+    return `≈ ${mins} min`;
+  }
+
+  function startNavigation(item){
+    if (!userCoords){
+      showToast(STR[LANG].navNeedLoc);
+      locateFab.click();
+      // once a position arrives, placeUserMarker() will not auto-start nav;
+      // ask the user to tap "Y aller" again is avoided by queuing it here:
+      navTarget = item;
+      const waitForFix = setInterval(() => {
+        if (userCoords){
+          clearInterval(waitForFix);
+          startNavigation(item);
+        }
+      }, 400);
+      setTimeout(() => clearInterval(waitForFix), 10000);
+      return;
+    }
+    navTarget = item;
+    navActive = true;
+    requestCompass();
+    if (watchId === null) locateFab.click(); // ensure continuous tracking is on
+    $("navHud").classList.add("show");
+    $("navDest").textContent = `${STR[LANG].nav} · ${nameOf(item)}`;
+    closeSheet();
+    updateNavigation();
+    map.easeTo({ pitch: 45, duration: 500 });
+    enableFollow();
+  }
+
+  function stopNavigation(){
+    navActive = false;
+    navTarget = null;
+    $("navHud").classList.remove("show", "arrived");
+    clearRouteLine();
+    disableFollow();
+    map.easeTo({ pitch: 0, bearing: 0, duration: 400 });
+  }
+
+  function updateNavigation(){
+    if (!navActive || !navTarget || !userCoords) return;
+    const target = { lat: navTarget.latitude, lng: navTarget.longitude };
+    const dist = haversine(userCoords, target);
+    const brng = bearingTo(userCoords, target);
+    setRouteLine(userCoords, target);
+
+    $("navDistance").textContent = formatDistance(dist);
+    $("navEta").textContent = ` · ${formatEta(dist)} ${STR[LANG].walk}`;
+    $("navHint").textContent = compassHeading !== null ? STR[LANG].compassOn : STR[LANG].noCompass;
+
+    const relative = compassHeading !== null ? (brng - compassHeading) : (brng - map.getBearing());
+    $("navArrow").style.transform = `rotate(${relative}deg)`;
+
+    const hud = $("navHud");
+    if (dist < 15){
+      hud.classList.add("arrived");
+      $("navArrow").textContent = "🎉";
+      $("navDest").textContent = STR[LANG].arrived;
+      if (navigator.vibrate) navigator.vibrate([80,40,80]);
+    } else {
+      hud.classList.remove("arrived");
+      $("navArrow").textContent = "⬆";
+      $("navDest").textContent = `${STR[LANG].nav} · ${nameOf(navTarget)}`;
+    }
+  }
+
+  function requestCompass(){
+    if (compassListenerAttached) return;
+    const attach = () => {
+      window.addEventListener("deviceorientationabsolute", handleOrientation, true);
+      window.addEventListener("deviceorientation", handleOrientation, true);
+      compassListenerAttached = true;
+    };
+    if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function"){
+      DeviceOrientationEvent.requestPermission().then(state => {
+        if (state === "granted") attach();
+      }).catch(() => {});
+    } else {
+      attach();
+    }
+  }
+  function handleOrientation(e){
+    let heading = null;
+    if (typeof e.webkitCompassHeading === "number"){
+      heading = e.webkitCompassHeading;
+    } else if (e.alpha != null){
+      heading = 360 - e.alpha;
+    }
+    if (heading != null){
+      compassHeading = heading;
+      if (navActive) updateNavigation();
+    }
+  }
+
+  $("navClose").addEventListener("click", stopNavigation);
+  map.on("rotate", () => { if (navActive && compassHeading === null) updateNavigation(); });
+
+  // ---------------------------------------------------------------
+  // Follow mode — locks the camera to the live position and rotates
+  // the map to match device heading, like Google Maps turn-by-turn.
+  // Disengages automatically the moment the user drags/rotates manually.
+  // ---------------------------------------------------------------
+  const followFab = $("followFab");
+
+  function enableFollow(){
+    if (followMode) return;
+    if (!userCoords){
+      // no fix yet: get one, then enable follow once it lands
+      const waitForFix = setInterval(() => {
+        if (userCoords){ clearInterval(waitForFix); enableFollow(); }
+      }, 400);
+      setTimeout(() => clearInterval(waitForFix), 10000);
+      if (watchId === null) locateFab.click();
+      return;
+    }
+    followMode = true;
+    followFab.classList.add("follow-active");
+    requestCompass();
+    if (watchId === null) locateFab.click();
+    lastFollowCenter = null;
+    lastFollowBearing = null;
+    if (followInterval) clearInterval(followInterval);
+    followInterval = setInterval(applyFollowCamera, 150);
+    applyFollowCamera();
+  }
+
+  function disableFollow(){
+    followMode = false;
+    followFab.classList.remove("follow-active");
+    if (followInterval){ clearInterval(followInterval); followInterval = null; }
+  }
+
+  function applyFollowCamera(){
+    if (!followMode || !userCoords) return;
+    const bearing = compassHeading !== null ? compassHeading : map.getBearing();
+    const center = [userCoords.lng, userCoords.lat];
+    const moved = !lastFollowCenter || Math.abs(lastFollowCenter[0]-center[0]) > 1e-7 || Math.abs(lastFollowCenter[1]-center[1]) > 1e-7;
+    const turned = lastFollowBearing === null || Math.abs(((bearing - lastFollowBearing + 540) % 360) - 180) > 0.5;
+    if (!moved && !turned) return;
+    lastFollowCenter = center;
+    lastFollowBearing = bearing;
+    map.easeTo({ center, bearing, duration: 180, easing: t => t });
+  }
+
+  followFab.addEventListener("click", () => {
+    if (followMode) disableFollow(); else enableFollow();
+  });
+
+  // Manual pan/rotate breaks out of follow mode, same as Google Maps
+  map.on("dragstart", (e) => { if (followMode && e.originalEvent) disableFollow(); });
+  map.on("rotatestart", (e) => { if (followMode && e.originalEvent) disableFollow(); });
+
+  // ---------------------------------------------------------------
+  // PWA: service worker registration + install prompt
+  // ---------------------------------------------------------------
+  if ("serviceWorker" in navigator){
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    });
+  }
+
+  const installBtn = $("installBtn");
+  let deferredInstallPrompt = null;
+  const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+  if (!isStandalone){
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredInstallPrompt = e;
+      installBtn.style.display = "flex";
+    });
+    if (isIOS){
+      // iOS Safari has no beforeinstallprompt — show manual instructions instead
+      installBtn.style.display = "flex";
+      installBtn.textContent = "⬇️ Ajouter à l'écran d'accueil";
+    }
+  }
+
+  installBtn.addEventListener("click", async () => {
+    if (deferredInstallPrompt){
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      installBtn.style.display = "none";
+      return;
+    }
+    if (isIOS){
+      showToast(LANG === "fr" ? "Appuyez sur Partager, puis « Sur l'écran d'accueil »" : "Tap Share, then \"Add to Home Screen\"");
+    }
+  });
+
+  window.addEventListener("appinstalled", () => {
+    installBtn.style.display = "none";
+    showToast(LANG === "fr" ? "App installée !" : "App installed!");
+  });
+
+  // ---------------------------------------------------------------
+  // Deep link (?poi=)
+  // ---------------------------------------------------------------
+  window.addEventListener("load", () => {
+    const params = new URLSearchParams(location.search);
+    const poiId = params.get("poi");
+    if (!poiId) return;
+    const check = setInterval(() => {
+      if (!pois.length) return;
+      clearInterval(check);
+      const item = pois.find(p => p.id === poiId);
+      if (item){ flyToItem(item); openSheet(item); }
+    }, 300);
+  });
+
+})();
+</script>
+</body>
+</html>
