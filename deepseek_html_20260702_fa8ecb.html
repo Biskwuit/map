@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Festival Interactive Map</title>
+    <style>
+        /* ── reset & base ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #1a1a2e;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            user-select: none;
+            color: #fff;
+        }
+
+        /* ── canvas ── */
+        #mapCanvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+            background: #2d2d44;
+            cursor: grab;
+            touch-action: none;
+        }
+        #mapCanvas:active {
+            cursor: grabbing;
+        }
+
+        /* ── control overlay ── */
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background: rgba(20, 20, 40, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            z-index: 10;
+            pointer-events: auto;
+        }
+        .controls button {
+            background: rgba(255, 255, 255, 0.06);
+            border: none;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .controls button:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .controls button:active {
+            transform: scale(0.92);
+        }
+        .controls .sep {
+            width: 1px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+        .controls .label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 0 6px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .controls .badge {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .controls .badge span {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .controls .icon-btn {
+            font-size: 16px;
+        }
+
+        /* ── responsive controls ── */
+        @media (max-width: 640px) {
+            .controls {
+                bottom: 16px;
+                padding: 10px 14px;
+                gap: 6px;
+                border-radius: 30px;
+                width: calc(100% - 32px);
+                max-width: 500px;
+            }
+            .controls button {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+            .controls .badge {
+                font-size: 11px;
+                padding: 2px 10px;
+            }
+            .controls .label {
+                font-size: 10px;
+                padding: 0 4px;
+            }
+        }
+
+        /* ── loading overlay ── */
+        #loading {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a2e;
+            z-index: 100;
+            transition: opacity 0.8s ease;
+        }
+        #loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid rgba(255, 255, 255, 0.08);
+            border-top-color: #6c5ce7;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        #loading p {
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ── POI tooltip ── */
+        #tooltip {
+            position: fixed;
+            pointer-events: none;
+            background: rgba(12, 12, 30, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 12px 16px;
+            max-width: 220px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            z-index: 20;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        }
+        #tooltip.visible {
+            opacity: 1;
+        }
+        #tooltip .tt-name {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        #tooltip .tt-category {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        #tooltip .tt-img {
+            margin-top: 8px;
+            border-radius: 6px;
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: cover;
+            display: none;
+        }
+        #tooltip .tt-img.show {
+            display: block;
+        }
+
+        /* ── compass / rotation indicator ── */
+        .compass {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(20, 20, 40, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+        .compass .arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        /* ── user position pulse ── */
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+        .user-pulse-ring {
+            animation: pulse-ring 1.8s ease-out infinite;
+        }
+
+        /* scrollbar hide */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- loading -->
+    <div id="loading">
+        <div class="spinner"></div>
+        <p>Loading festival map …</p>
+    </div>
+
+    <!-- tooltip -->
+    <div id="tooltip">
+        <div class="tt-name"></div>
+        <div class="tt-category"></div>
+        <img class="tt-img" src="" alt="" />
+    </div>
+
+    <!-- compass -->
+    <div class="compass" id="compass">
+        <span class="arrow">🧭</span>
+    </div>
+
+    <!-- map canvas -->
+    <canvas id="mapCanvas"></canvas>
+
+    <!-- controls -->
+    <div class="controls" id="controls">
+        <button id="btnZoomIn" title="Zoom in">＋</button>
+        <button id="btnZoomOut" title="Zoom out">−</button>
+        <span class="sep"></span>
+
+        <button id="btnRotateLeft" title="Rotate left">↺</button>
+        <button id="btnRotateRight" title="Rotate right">↻</button>
+        <span class="sep"></span>
+
+        <button id="btnCenterUser" title="Center on my position">📍</button>
+        <button id="btnReset" title="Reset view">⟲</button>
+        <span class="sep"></span>
+
+        <span class="badge">📍 <span id="poiCount">0</span> POIs</span>
+        <span class="badge" id="userStatus">⏳ locating…</span>
+    </div>
+
+    <script>
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  CONFIG
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        const MAP_IMAGE_URL =
+            'https://raw.githubusercontent.com/Biskwuit/map/refs/heads/main/e3351a0b-fde5-4dea-88ad-d298e697e8b1.jpg';
+        const POIS_URL =
+            'https://raw.githubusercontent.com/Biskwuit/map/refs/heads/main/pois.json';
+
+        // Corner coordinates of the image [lon, lat]
+        const MAP_BOUNDS = {
+            minLon: 2.75593,
+            maxLon: 2.766292,
+            minLat: 50.280346,
+            maxLat: 50.286918
+        };
+
+        // Category → color mapping
+        const CATEGORY_COLORS = {
+            'Bars à thème': '#e74c3c',
+            'Food': '#2ecc71',
+            'Bar': '#f39c12',
+            'Stage': '#9b59b6',
+            'Information': '#3498db',
+            'Toilet': '#95a5a6',
+            'Shop': '#e67e22',
+            'default': '#6c5ce7'
+        };
+
+        // Category → emoji fallback
+        const CATEGORY_EMOJI = {
+            'Bars à thème': '🍸',
+            'Food': '🍔',
+            'Bar': '🍺',
+            'Stage': '🎭',
+            'Information': 'ℹ️',
+            'Toilet': '🚻',
+            'Shop': '🛍️',
+            'default': '📍'
+        };
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  STATE
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        const state = {
+            // view
+            panX: 0,
+            panY: 0,
+            rotation: 0, // radians
+            zoom: 1,
+            // image
+            img: null,
+            imgWidth: 0,
+            imgHeight: 0,
+            imgLoaded: false,
+            // data
+            pois: [],
+            // user
+            userLat: null,
+            userLng: null,
+            userLocated: false,
+            userWatchId: null,
+            // interaction
+            isDragging: false,
+            dragStartX: 0,
+            dragStartY: 0,
+            dragStartPanX: 0,
+            dragStartPanY: 0,
+            // hover
+            hoveredPoi: null,
+            // canvas sizing
+            canvasW: 0,
+            canvasH: 0,
+            // tooltip
+            tooltipTimeout: null,
+        };
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  DOM REFS
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        const canvas = document.getElementById('mapCanvas');
+        const ctx = canvas.getContext('2d');
+        const loadingEl = document.getElementById('loading');
+        const tooltipEl = document.getElementById('tooltip');
+        const ttName = tooltipEl.querySelector('.tt-name');
+        const ttCategory = tooltipEl.querySelector('.tt-category');
+        const ttImg = tooltipEl.querySelector('.tt-img');
+        const poiCountEl = document.getElementById('poiCount');
+        const userStatusEl = document.getElementById('userStatus');
+        const compassEl = document.getElementById('compass');
+        const compassArrow = compassEl.querySelector('.arrow');
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  COORDINATE HELPERS
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function latLngToPixel(lat, lng) {
+            const { minLon, maxLon, minLat, maxLat } = MAP_BOUNDS;
+            const x = (lng - minLon) / (maxLon - minLon) * state.imgWidth;
+            const y = (maxLat - lat) / (maxLat - minLat) * state.imgHeight;
+            return { x, y };
+        }
+
+        function pixelToLatLng(px, py) {
+            const { minLon, maxLon, minLat, maxLat } = MAP_BOUNDS;
+            const lng = minLon + (px / state.imgWidth) * (maxLon - minLon);
+            const lat = maxLat - (py / state.imgHeight) * (maxLat - minLat);
+            return { lat, lng };
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  RENDER
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function render() {
+            const W = state.canvasW;
+            const H = state.canvasH;
+            if (W === 0 || H === 0) return;
+
+            ctx.clearRect(0, 0, W, H);
+
+            // ── background ──
+            ctx.fillStyle = '#2d2d44';
+            ctx.fillRect(0, 0, W, H);
+
+            if (!state.imgLoaded) {
+                ctx.fillStyle = 'rgba(255,255,255,0.05)';
+                ctx.font = '16px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('Loading map …', W / 2, H / 2);
+                return;
+            }
+
+            // ── build view transform ──
+            // 1. translate to center of canvas
+            // 2. rotate
+            // 3. scale (zoom)
+            // 4. translate by pan offset
+            // 5. draw image at ( -imgW/2, -imgH/2 )
+
+            const cx = W / 2;
+            const cy = H / 2;
+
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(state.rotation);
+            ctx.scale(state.zoom, state.zoom);
+            ctx.translate(state.panX, state.panY);
+
+            // ── draw map image ──
+            const iw = state.imgWidth;
+            const ih = state.imgHeight;
+            ctx.drawImage(state.img, -iw / 2, -ih / 2, iw, ih);
+
+            // ── draw POIs ──
+            for (const poi of state.pois) {
+                const pos = latLngToPixel(poi.latitude, poi.longitude);
+                // pos is in image pixel coords, but we're in the transformed space
+                // where the image is at (-iw/2, -ih/2) and pos is measured from image origin
+                const px = pos.x - iw / 2;
+                const py = pos.y - ih / 2;
+                drawPoi(ctx, px, py, poi);
+            }
+
+            // ── draw user position ──
+            if (state.userLocated && state.userLat !== null && state.userLng !== null) {
+                const pos = latLngToPixel(state.userLat, state.userLng);
+                const ux = pos.x - iw / 2;
+                const uy = pos.y - ih / 2;
+                drawUserMarker(ctx, ux, uy);
+            }
+
+            ctx.restore();
+
+            // ── update compass ──
+            const deg = (state.rotation * 180 / Math.PI) % 360;
+            compassArrow.style.transform = `rotate(${-deg}deg)`;
+
+            // ── update user status ──
+            if (state.userLocated) {
+                userStatusEl.textContent = '📍 live';
+                userStatusEl.style.color = '#2ecc71';
+            } else {
+                userStatusEl.textContent = '⏳ locating…';
+                userStatusEl.style.color = 'rgba(255,255,255,0.5)';
+            }
+        }
+
+        // ── draw a single POI ──
+        function drawPoi(ctx, x, y, poi) {
+            const category = poi.category_t?.en || poi.category_t?.fr || poi.category_t?.de || 'default';
+            const color = CATEGORY_COLORS[category] || CATEGORY_COLORS.default;
+            const emoji = CATEGORY_EMOJI[category] || CATEGORY_EMOJI.default;
+
+            const radius = 14;
+            const isHovered = state.hoveredPoi === poi;
+
+            // shadow
+            ctx.shadowColor = 'rgba(0,0,0,0.4)';
+            ctx.shadowBlur = 12;
+            ctx.shadowOffsetY = 2;
+
+            // circle
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetY = 0;
+            ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // emoji
+            ctx.font = '16px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = '#fff';
+            ctx.shadowColor = 'rgba(0,0,0,0.3)';
+            ctx.shadowBlur = 6;
+            ctx.fillText(emoji, x, y + 1);
+            ctx.shadowBlur = 0;
+
+            // name label
+            const name = poi.name_t?.en || poi.name_t?.fr || poi.name_t?.de || 'POI';
+            ctx.font = isHovered ? 'bold 13px sans-serif' : '12px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            const labelY = y - radius - 6;
+
+            // text halo
+            ctx.shadowColor = 'rgba(0,0,0,0.8)';
+            ctx.shadowBlur = 8;
+            ctx.fillStyle = '#fff';
+            ctx.fillText(name, x, labelY);
+            ctx.shadowBlur = 0;
+
+            // if hovered, draw a glow ring
+            if (isHovered) {
+                ctx.beginPath();
+                ctx.arc(x, y, radius + 6, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([4, 6]);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+        }
+
+        // ── draw user marker ──
+        function drawUserMarker(ctx, x, y) {
+            const time = Date.now() / 1000;
+            const pulse = 0.6 + 0.4 * Math.sin(time * 2.2);
+
+            // outer ring (pulsing)
+            ctx.shadowColor = 'rgba(0,0,0,0.3)';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.arc(x, y, 20 * pulse, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(52, 152, 219, ${0.15 * pulse})`;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            // main dot
+            ctx.shadowColor = 'rgba(0,0,0,0.4)';
+            ctx.shadowBlur = 16;
+            ctx.beginPath();
+            ctx.arc(x, y, 10, 0, Math.PI * 2);
+            ctx.fillStyle = '#3498db';
+            ctx.fill();
+            ctx.shadowBlur = 0;
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+
+            // inner dot
+            ctx.beginPath();
+            ctx.arc(x, y, 4, 0, Math.PI * 2);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+
+            // label
+            ctx.font = 'bold 11px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            ctx.shadowColor = 'rgba(0,0,0,0.8)';
+            ctx.shadowBlur = 10;
+            ctx.fillStyle = '#fff';
+            ctx.fillText('You', x, y - 16);
+            ctx.shadowBlur = 0;
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  RESIZE
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function resizeCanvas() {
+            const rect = canvas.parentElement
+                ? canvas.parentElement.getBoundingClientRect()
+                : { width: window.innerWidth, height: window.innerHeight };
+            const dpr = window.devicePixelRatio || 1;
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            canvas.width = w * dpr;
+            canvas.height = h * dpr;
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            state.canvasW = w;
+            state.canvasH = h;
+            ctx.scale(dpr, dpr);
+            render();
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  INTERACTION
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.clientX || e.touches?.[0]?.clientX || 0;
+            const clientY = e.clientY || e.touches?.[0]?.clientY || 0;
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        // ── mouse / touch drag ──
+        function onPointerDown(e) {
+            e.preventDefault();
+            const pos = getMousePos(e);
+            state.isDragging = true;
+            state.dragStartX = pos.x;
+            state.dragStartY = pos.y;
+            state.dragStartPanX = state.panX;
+            state.dragStartPanY = state.panY;
+            canvas.style.cursor = 'grabbing';
+            hideTooltip();
+        }
+
+        function onPointerMove(e) {
+            e.preventDefault();
+            const pos = getMousePos(e);
+
+            if (state.isDragging) {
+                const dx = pos.x - state.dragStartX;
+                const dy = pos.y - state.dragStartY;
+                // Scale drag by zoom (so pan feels natural)
+                state.panX = state.dragStartPanX + dx / state.zoom;
+                state.panY = state.dragStartPanY + dy / state.zoom;
+                render();
+                hideTooltip();
+                return;
+            }
+
+            // hover detection
+            const hovered = getPoiAt(pos.x, pos.y);
+            if (hovered !== state.hoveredPoi) {
+                state.hoveredPoi = hovered;
+                render();
+                if (hovered) {
+                    showTooltip(hovered, pos.x, pos.y);
+                } else {
+                    hideTooltip();
+                }
+            } else if (hovered) {
+                // update tooltip position
+                updateTooltipPosition(pos.x, pos.y);
+            }
+        }
+
+        function onPointerUp(e) {
+            state.isDragging = false;
+            canvas.style.cursor = 'grab';
+        }
+
+        // ── get POI at screen position ──
+        function getPoiAt(screenX, screenY) {
+            if (!state.imgLoaded) return null;
+            const W = state.canvasW;
+            const H = state.canvasH;
+            const cx = W / 2;
+            const cy = H / 2;
+
+            // inverse transform
+            const dx = screenX - cx;
+            const dy = screenY - cy;
+            // inverse rotation
+            const cos = Math.cos(-state.rotation);
+            const sin = Math.sin(-state.rotation);
+            const rx = dx * cos - dy * sin;
+            const ry = dx * sin + dy * cos;
+            // inverse scale
+            const sx = rx / state.zoom;
+            const sy = ry / state.zoom;
+            // inverse pan
+            const px = sx - state.panX;
+            const py = sy - state.panY;
+
+            const iw = state.imgWidth;
+            const ih = state.imgHeight;
+            // image pixel coords
+            const imgX = px + iw / 2;
+            const imgY = py + ih / 2;
+
+            if (imgX < 0 || imgX > iw || imgY < 0 || imgY > ih) return null;
+
+            // check against POIs
+            const threshold = 20 / state.zoom;
+            for (const poi of state.pois) {
+                const pos = latLngToPixel(poi.latitude, poi.longitude);
+                const dist = Math.hypot(imgX - pos.x, imgY - pos.y);
+                if (dist < threshold) return poi;
+            }
+            return null;
+        }
+
+        // ── zoom ──
+        function zoomAt(factor, centerX, centerY) {
+            const W = state.canvasW;
+            const H = state.canvasH;
+            const cx = centerX ?? W / 2;
+            const cy = centerY ?? H / 2;
+
+            const oldZoom = state.zoom;
+            const newZoom = Math.max(0.3, Math.min(8, oldZoom * factor));
+
+            // zoom toward cursor
+            const dx = cx - W / 2;
+            const dy = cy - H / 2;
+            const cos = Math.cos(-state.rotation);
+            const sin = Math.sin(-state.rotation);
+            const rx = dx * cos - dy * sin;
+            const ry = dx * sin + dy * cos;
+            const sx = rx / oldZoom;
+            const sy = ry / oldZoom;
+            const newSx = rx / newZoom;
+            const newSy = ry / newZoom;
+
+            state.panX += (newSx - sx);
+            state.panY += (newSy - sy);
+            state.zoom = newZoom;
+            render();
+        }
+
+        // ── rotate ──
+        function rotateBy(angle) {
+            state.rotation += angle;
+            render();
+        }
+
+        // ── center on user ──
+        function centerOnUser() {
+            if (!state.userLocated || state.userLat === null || state.userLng === null) {
+                userStatusEl.textContent = '📍 location unavailable';
+                userStatusEl.style.color = '#e74c3c';
+                setTimeout(() => {
+                    if (!state.userLocated) {
+                        userStatusEl.textContent = '⏳ locating…';
+                        userStatusEl.style.color = 'rgba(255,255,255,0.5)';
+                    }
+                }, 2500);
+                return;
+            }
+            const pos = latLngToPixel(state.userLat, state.userLng);
+            const iw = state.imgWidth;
+            const ih = state.imgHeight;
+            // center the user in the view
+            state.panX = -pos.x + iw / 2;
+            state.panY = -pos.y + ih / 2;
+            state.zoom = 1.2;
+            state.rotation = 0;
+            render();
+        }
+
+        // ── reset view ──
+        function resetView() {
+            state.panX = 0;
+            state.panY = 0;
+            state.rotation = 0;
+            state.zoom = 1;
+            render();
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  TOOLTIP
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function showTooltip(poi, x, y) {
+            const name = poi.name_t?.en || poi.name_t?.fr || poi.name_t?.de || 'POI';
+            const category = poi.category_t?.en || poi.category_t?.fr || poi.category_t?.de || '';
+            ttName.textContent = name;
+            ttCategory.textContent = category;
+
+            if (poi.image) {
+                ttImg.src = poi.image;
+                ttImg.classList.add('show');
+            } else {
+                ttImg.classList.remove('show');
+            }
+
+            updateTooltipPosition(x, y);
+            tooltipEl.classList.add('visible');
+        }
+
+        function updateTooltipPosition(x, y) {
+            const tw = tooltipEl.offsetWidth || 200;
+            const th = tooltipEl.offsetHeight || 80;
+            let left = x + 16;
+            let top = y - th / 2;
+            if (left + tw > window.innerWidth - 10) left = x - tw - 16;
+            if (top < 10) top = 10;
+            if (top + th > window.innerHeight - 10) top = window.innerHeight - th - 10;
+            tooltipEl.style.left = left + 'px';
+            tooltipEl.style.top = top + 'px';
+        }
+
+        function hideTooltip() {
+            tooltipEl.classList.remove('visible');
+            state.hoveredPoi = null;
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  LOAD DATA
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        async function loadPOIs() {
+            try {
+                const resp = await fetch(POIS_URL);
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                const json = await resp.json();
+
+                // extract items from the nested structure
+                let items = [];
+                if (json?.data?.app?.module?.items) {
+                    items = json.data.app.module.items;
+                } else if (Array.isArray(json)) {
+                    items = json;
+                } else if (json?.items) {
+                    items = json.items;
+                } else {
+                    // try to find any array
+                    for (const key of Object.keys(json)) {
+                        if (Array.isArray(json[key])) {
+                            items = json[key];
+                            break;
+                        }
+                    }
+                }
+
+                if (!items.length) {
+                    console.warn('No POI items found in response');
+                    return;
+                }
+
+                state.pois = items.filter(p =>
+                    p.latitude != null && p.longitude != null &&
+                    !isNaN(p.latitude) && !isNaN(p.longitude)
+                );
+
+                poiCountEl.textContent = state.pois.length;
+                render();
+            } catch (err) {
+                console.error('Failed to load POIs:', err);
+                poiCountEl.textContent = '⚠️';
+            }
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  LOAD MAP IMAGE
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function loadMapImage() {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = () => {
+                    state.img = img;
+                    state.imgWidth = img.width;
+                    state.imgHeight = img.height;
+                    state.imgLoaded = true;
+                    resolve();
+                };
+                img.onerror = () => reject(new Error('Failed to load map image'));
+                img.src = MAP_IMAGE_URL;
+            });
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  GEOLOCATION
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function startGeolocation() {
+            if (!navigator.geolocation) {
+                userStatusEl.textContent = '📍 GPS unavailable';
+                userStatusEl.style.color = '#e74c3c';
+                return;
+            }
+
+            state.userWatchId = navigator.geolocation.watchPosition(
+                (pos) => {
+                    state.userLat = pos.coords.latitude;
+                    state.userLng = pos.coords.longitude;
+                    state.userLocated = true;
+                    userStatusEl.textContent = '📍 live';
+                    userStatusEl.style.color = '#2ecc71';
+                    render();
+                },
+                (err) => {
+                    console.warn('Geolocation error:', err.message);
+                    userStatusEl.textContent = '📍 fallback';
+                    userStatusEl.style.color = '#f39c12';
+                    // fallback: center of the map area
+                    state.userLat = (MAP_BOUNDS.minLat + MAP_BOUNDS.maxLat) / 2;
+                    state.userLng = (MAP_BOUNDS.minLon + MAP_BOUNDS.maxLon) / 2;
+                    state.userLocated = true;
+                    render();
+                }, {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 30000
+                }
+            );
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  EVENT BINDING
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function bindEvents() {
+            // mouse
+            canvas.addEventListener('mousedown', onPointerDown);
+            window.addEventListener('mousemove', onPointerMove);
+            window.addEventListener('mouseup', onPointerUp);
+
+            // touch
+            canvas.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) onPointerDown(e);
+            }, { passive: false });
+            window.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1) onPointerMove(e);
+            }, { passive: false });
+            window.addEventListener('touchend', onPointerUp, { passive: false });
+
+            // wheel (zoom)
+            canvas.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const rect = canvas.getBoundingClientRect();
+                zoomAt(delta, e.clientX - rect.left, e.clientY - rect.top);
+            }, { passive: false });
+
+            // controls
+            document.getElementById('btnZoomIn').addEventListener('click', () => zoomAt(1.2));
+            document.getElementById('btnZoomOut').addEventListener('click', () => zoomAt(0.8));
+            document.getElementById('btnRotateLeft').addEventListener('click', () => rotateBy(-0.15));
+            document.getElementById('btnRotateRight').addEventListener('click', () => rotateBy(0.15));
+            document.getElementById('btnCenterUser').addEventListener('click', centerOnUser);
+            document.getElementById('btnReset').addEventListener('click', resetView);
+
+            // keyboard
+            window.addEventListener('keydown', (e) => {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                switch (e.key) {
+                    case '+':
+                    case '=':
+                        zoomAt(1.2);
+                        e.preventDefault();
+                        break;
+                    case '-':
+                        zoomAt(0.8);
+                        e.preventDefault();
+                        break;
+                    case 'r':
+                        resetView();
+                        e.preventDefault();
+                        break;
+                    case 'ArrowLeft':
+                        rotateBy(-0.1);
+                        e.preventDefault();
+                        break;
+                    case 'ArrowRight':
+                        rotateBy(0.1);
+                        e.preventDefault();
+                        break;
+                    case 'c':
+                    case 'C':
+                        centerOnUser();
+                        e.preventDefault();
+                        break;
+                }
+            });
+
+            // resize
+            window.addEventListener('resize', resizeCanvas);
+
+            // hide tooltip on scroll
+            window.addEventListener('scroll', hideTooltip);
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  INIT
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        async function init() {
+            try {
+                // load map image
+                await loadMapImage();
+
+                // load POIs
+                await loadPOIs();
+
+                // hide loading
+                loadingEl.classList.add('hidden');
+
+                // resize & render
+                resizeCanvas();
+
+                // start geolocation
+                startGeolocation();
+
+                // bind events
+                bindEvents();
+
+                // center on map area initially
+                const cx = (MAP_BOUNDS.minLon + MAP_BOUNDS.maxLon) / 2;
+                const cy = (MAP_BOUNDS.minLat + MAP_BOUNDS.maxLat) / 2;
+                const pos = latLngToPixel(cy, cx);
+                state.panX = -pos.x + state.imgWidth / 2;
+                state.panY = -pos.y + state.imgHeight / 2;
+                render();
+
+            } catch (err) {
+                console.error('Init error:', err);
+                loadingEl.innerHTML = `
+                    <div style="color:#e74c3c;font-size:32px;margin-bottom:12px;">⚠️</div>
+                    <p style="color:rgba(255,255,255,0.6);">Failed to load map</p>
+                    <p style="color:rgba(255,255,255,0.3);font-size:13px;margin-top:8px;">${err.message}</p>
+                    <button onclick="location.reload()" style="margin-top:20px;padding:10px 30px;border:none;border-radius:30px;background:#6c5ce7;color:#fff;font-size:14px;cursor:pointer;">Retry</button>
+                `;
+            }
+        }
+
+        // start
+        init();
+    </script>
+</body>
+</html>
