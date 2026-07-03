@@ -969,8 +969,14 @@
   function requestCompass(){
     if (compassListenerAttached) return;
     const attach = () => {
-      window.addEventListener("deviceorientationabsolute", handleOrientation, true);
-      window.addEventListener("deviceorientation", handleOrientation, true);
+      // Prefer the "absolute" event (true/magnetic-north referenced) if the
+      // device offers it. On many Android/Chrome phones BOTH events fire for
+      // the same physical turn, but with different reference frames — reading
+      // from both interchangeably is exactly what causes the "teleport
+      // between two positions" symptom. Once absolute events are confirmed
+      // to be arriving, the plain event is ignored entirely.
+      window.addEventListener("deviceorientationabsolute", onAbsoluteOrientation, true);
+      window.addEventListener("deviceorientation", onRelativeOrientation, true);
       compassListenerAttached = true;
     };
     if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function"){
@@ -981,30 +987,65 @@
       attach();
     }
   }
-  function handleOrientation(e){
-    let heading = null;
-    if (typeof e.webkitCompassHeading === "number"){
-      heading = e.webkitCompassHeading;
-    } else if (e.alpha != null){
-      heading = 360 - e.alpha;
-    }
-    if (heading == null) return;
 
-    // Throttle: raw sensor events can fire 30-60+ times/sec, far more than
-    // the UI needs, and processing every one amplifies noise.
+  let usingAbsoluteSource = false;
+
+  function onAbsoluteOrientation(e){
+    usingAbsoluteSource = true;
+    if (e.alpha != null) applyHeadingReading(norm360(360 - e.alpha));
+  }
+
+  function onRelativeOrientation(e){
+    // iOS exposes a real compass heading here (no separate "absolute" event
+    // exists on iOS at all), so always trust it.
+    if (typeof e.webkitCompassHeading === "number"){
+      applyHeadingReading(norm360(e.webkitCompassHeading));
+      return;
+    }
+    // Elsewhere: only use this plain event as a fallback for devices that
+    // never fire the absolute one. Once the absolute source is confirmed,
+    // this stream is ignored completely to avoid the two-source conflict.
+    if (usingAbsoluteSource) return;
+    if (e.alpha != null) applyHeadingReading(norm360(360 - e.alpha));
+  }
+
+  // Spike rejection: a single wildly-different reading requires a second,
+  // consistent reading before it's trusted — this filters out one-frame
+  // sensor glitches (magnetometer interference, source hiccups) without
+  // adding lag to genuine fast turns.
+  let pendingHeading = null;
+  let pendingCount = 0;
+
+  function applyHeadingReading(heading){
     const now = performance.now();
-    if (now - lastOrientationTs < 90) return;
+    if (now - lastOrientationTs < 90) return; // throttle: sensors fire far faster than the UI needs
     lastOrientationTs = now;
 
-    heading = norm360(heading);
     if (compassHeading === null){
       compassHeading = heading;
+      if (navActive) updateNavigation();
+      return;
+    }
+
+    const diff = shortestAngleDiff(compassHeading, heading);
+    if (Math.abs(diff) < 0.6) return; // ignore micro sensor noise
+
+    if (Math.abs(diff) > 100){
+      // Big jump: confirm with a second consistent reading before accepting,
+      // so a lone glitchy sample can't teleport the arrow.
+      if (pendingHeading !== null && Math.abs(shortestAngleDiff(pendingHeading, heading)) < 20){
+        pendingCount++;
+      } else {
+        pendingHeading = heading;
+        pendingCount = 1;
+      }
+      if (pendingCount < 2) return;
+      pendingHeading = null;
+      pendingCount = 0;
+      compassHeading = heading; // confirmed real turn: snap straight to it, no lag
     } else {
-      // Exponential smoothing across the shortest angular path, so it
-      // doesn't jump the "long way round" near the 0/360 seam.
-      const diff = shortestAngleDiff(compassHeading, heading);
-      // Ignore tiny sensor noise entirely; only track real movement.
-      if (Math.abs(diff) < 0.6) return;
+      // Exponential smoothing across the shortest angular path, so it never
+      // jumps the "long way round" near the 0/360 seam.
       const ALPHA = 0.15;
       compassHeading = norm360(compassHeading + diff * ALPHA);
     }
