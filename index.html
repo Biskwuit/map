@@ -225,7 +225,7 @@
     width:52px; height:52px; border-radius:50%; background: rgba(47,182,166,0.15);
     border:2px solid var(--teal); display:flex; align-items:center; justify-content:center; flex:0 0 52px;
   }
-  .nav-arrow{ font-size:24px; transition: transform .25s ease; display:inline-block; color:var(--teal); }
+  .nav-arrow{ font-size:24px; transition: transform .35s cubic-bezier(.25,.8,.25,1); display:inline-block; color:var(--teal); }
   .nav-info{ flex:1; min-width:0; }
   .nav-dest{ font-family:'Anton'; font-size:16px; letter-spacing:0.3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .nav-meta{ font-size:12px; color:rgba(247,243,233,0.6); margin-top:2px; display:flex; gap:8px; align-items:center; }
@@ -454,8 +454,10 @@
   let navTarget = null;
   let navActive = false;
   let userCoords = null;        // { lat, lng }
-  let compassHeading = null;    // degrees from true/magnetic north, or null if unavailable
+  let compassHeading = null;    // degrees from true/magnetic north, or null if unavailable (smoothed)
   let compassListenerAttached = false;
+  let lastOrientationTs = 0;
+  let arrowUnwrapped = 0;       // continuously-accumulated rotation so the arrow never snaps across 0/360
   let routeLayerReady = false;
 
   // Follow mode (Google-Maps-style heading-up camera lock)
@@ -834,6 +836,14 @@
   const EARTH_R = 6371000;
   function toRad(d){ return d * Math.PI / 180; }
   function toDeg(r){ return r * 180 / Math.PI; }
+  function norm360(a){ return ((a % 360) + 360) % 360; }
+  function shortestAngleDiff(from, to){
+    // signed shortest difference to get from `from` to `to`, in (-180, 180]
+    let d = (norm360(to) - norm360(from)) % 360;
+    if (d > 180) d -= 360;
+    if (d < -180) d += 360;
+    return d;
+  }
 
   function haversine(a, b){
     const dLat = toRad(b.lat - a.lat);
@@ -939,8 +949,9 @@
     $("navEta").textContent = ` · ${formatEta(dist)} ${STR[LANG].walk}`;
     $("navHint").textContent = compassHeading !== null ? STR[LANG].compassOn : STR[LANG].noCompass;
 
-    const relative = compassHeading !== null ? (brng - compassHeading) : (brng - map.getBearing());
-    $("navArrow").style.transform = `rotate(${relative}deg)`;
+    const relativeTarget = compassHeading !== null ? (brng - compassHeading) : (brng - map.getBearing());
+    arrowUnwrapped += shortestAngleDiff(arrowUnwrapped, relativeTarget);
+    $("navArrow").style.transform = `rotate(${arrowUnwrapped}deg)`;
 
     const hud = $("navHud");
     if (dist < 15){
@@ -977,10 +988,27 @@
     } else if (e.alpha != null){
       heading = 360 - e.alpha;
     }
-    if (heading != null){
+    if (heading == null) return;
+
+    // Throttle: raw sensor events can fire 30-60+ times/sec, far more than
+    // the UI needs, and processing every one amplifies noise.
+    const now = performance.now();
+    if (now - lastOrientationTs < 90) return;
+    lastOrientationTs = now;
+
+    heading = norm360(heading);
+    if (compassHeading === null){
       compassHeading = heading;
-      if (navActive) updateNavigation();
+    } else {
+      // Exponential smoothing across the shortest angular path, so it
+      // doesn't jump the "long way round" near the 0/360 seam.
+      const diff = shortestAngleDiff(compassHeading, heading);
+      // Ignore tiny sensor noise entirely; only track real movement.
+      if (Math.abs(diff) < 0.6) return;
+      const ALPHA = 0.15;
+      compassHeading = norm360(compassHeading + diff * ALPHA);
     }
+    if (navActive) updateNavigation();
   }
 
   $("navClose").addEventListener("click", stopNavigation);
