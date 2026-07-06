@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jetons NFC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12141C;
+    --panel:#1C2030;
+    --panel-2:#242939;
+    --brass:#C9A24B;
+    --brass-dim:#8a7238;
+    --ivory:#EDEAE2;
+    --ivory-dim:#9a9baa;
+    --credit:#6FBF8B;
+    --debit:#C1573A;
+    --radius:18px;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0; padding:0; background:var(--ink); color:var(--ivory);
+    font-family:'Space Grotesk', system-ui, sans-serif; min-height:100vh;}
+  body{
+    padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+    display:flex; flex-direction:column; align-items:center;
+  }
+  .wrap{width:100%; max-width:480px; padding:28px 20px 60px;}
+
+  header{margin-bottom:28px;}
+  .eyebrow{font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--brass); margin:0 0 6px;}
+  h1{font-size:28px; font-weight:700; margin:0 0 6px; line-height:1.15;}
+  p.sub{color:var(--ivory-dim); margin:0; font-size:14.5px; line-height:1.5;}
+
+  /* --- Médaillon / signature --- */
+  .medal-zone{display:flex; flex-direction:column; align-items:center; gap:18px; margin:32px 0 30px;}
+  .medal{
+    position:relative; width:180px; height:180px; border-radius:50%;
+    background:
+      radial-gradient(circle at 32% 28%, #e6c877 0%, var(--brass) 42%, var(--brass-dim) 100%);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 0 0 6px #12141C, 0 0 0 8px #33261544, 0 18px 36px -12px #00000090;
+    transition: transform .5s cubic-bezier(.2,.9,.3,1.2);
+    transform-style:preserve-3d;
+  }
+  .medal.idle{ animation: breathe 3.4s ease-in-out infinite; }
+  @keyframes breathe{ 0%,100%{transform:scale(1)} 50%{transform:scale(1.02)} }
+  .medal.flip{ animation: flip .7s ease; }
+  @keyframes flip{
+    0%{transform:rotateY(0)}
+    50%{transform:rotateY(100deg) scale(1.06)}
+    100%{transform:rotateY(0)}
+  }
+  .medal-rim{
+    position:absolute; inset:0; border-radius:50%;
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 15px), #000 calc(100% - 14px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 15px), #000 calc(100% - 14px));
+  }
+  .medal-rim svg{ width:100%; height:100%; }
+  .medal-rim text{
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:2px;
+    fill:#3a2c12; opacity:.75;
+  }
+  .medal-inner{ text-align:center; }
+  .medal-balance{ font-family:'JetBrains Mono', monospace; font-weight:600; font-size:26px; color:#241a06; }
+  .medal-unit{ font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#4b3a12; }
+
+  .scan-btn{
+    appearance:none; border:none; cursor:pointer;
+    background:var(--panel-2); color:var(--ivory);
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:15.5px;
+    padding:15px 26px; border-radius:999px; width:100%;
+    border:1px solid #33384a; transition:background .2s, transform .1s;
+  }
+  .scan-btn:active{ transform:scale(.98); }
+  .scan-btn.on{ background:var(--brass); color:#241a06; border-color:var(--brass);}
+  .status{ font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--ivory-dim);
+    text-align:center; margin-top:12px; min-height:16px; }
+  .status.err{ color:var(--debit); }
+
+  /* --- Panneau tag actif --- */
+  .card{ background:var(--panel); border-radius:var(--radius); padding:20px; margin-top:26px;
+    border:1px solid #262b3d; }
+  .card-row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; }
+  .card-label{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--ivory-dim); }
+  .serial{ font-family:'JetBrains Mono', monospace; font-size:14px; color:var(--brass); }
+  .amount-row{ display:flex; gap:10px; margin-top:14px; }
+  input[type=number]{
+    flex:1; background:var(--ink); border:1px solid #2c3245; border-radius:12px;
+    color:var(--ivory); font-family:'JetBrains Mono', monospace; font-size:16px;
+    padding:12px 14px; min-width:0;
+  }
+  input[type=number]:focus{ outline:2px solid var(--brass); outline-offset:1px; }
+  .btn{
+    border:none; border-radius:12px; font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size:14px; padding:0 18px; cursor:pointer;
+  }
+  .btn-credit{ background:var(--credit); color:#0d2418; }
+  .btn-debit{ background:var(--debit); color:#2a0f08; }
+  .btn:active{ transform:scale(.97); }
+  .label-edit{ display:flex; gap:8px; margin-top:14px; }
+  .label-edit input[type=text]{
+    flex:1; background:var(--ink); border:1px solid #2c3245; border-radius:12px;
+    color:var(--ivory); font-family:'Space Grotesk', sans-serif; font-size:13.5px; padding:10px 12px;
+  }
+  .btn-ghost{ background:transparent; border:1px solid #33384a; color:var(--ivory-dim); }
+
+  /* --- Registre / historique --- */
+  .ledger{ margin-top:34px; }
+  .ledger h2{ font-size:13px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ivory-dim); font-weight:500; margin:0 0 12px; }
+  .ledger-list{ display:flex; flex-direction:column; gap:8px; }
+  .ledger-item{
+    display:flex; justify-content:space-between; align-items:center;
+    background:var(--panel); border:1px solid #262b3d; border-radius:12px;
+    padding:12px 14px; cursor:pointer;
+  }
+  .ledger-item:active{ background:var(--panel-2); }
+  .li-left{ display:flex; flex-direction:column; gap:2px; min-width:0; }
+  .li-name{ font-size:14px; font-weight:700; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .li-serial{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ivory-dim); }
+  .li-balance{ font-family:'JetBrains Mono', monospace; font-weight:600; color:var(--brass); font-size:15px; white-space:nowrap; margin-left:12px;}
+  .empty{ color:var(--ivory-dim); font-size:13.5px; padding:14px 2px; }
+
+  footer{ margin-top:34px; text-align:center; }
+  .reset-link{ background:none; border:none; color:var(--ivory-dim); font-size:12px;
+    font-family:'JetBrains Mono', monospace; text-decoration:underline; cursor:pointer; }
+
+  @media (prefers-reduced-motion: reduce){
+    .medal.idle, .medal.flip{ animation:none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Registre de jetons</p>
+    <h1>Jetons NFC</h1>
+    <p class="sub">Scannez un tag NFC pour retrouver ou créer son solde. Tout est enregistré uniquement dans ce navigateur.</p>
+  </header>
+
+  <div class="medal-zone">
+    <div class="medal idle" id="medal">
+      <div class="medal-rim" id="medalRim"></div>
+      <div class="medal-inner">
+        <div class="medal-balance" id="medalBalance">—</div>
+        <div class="medal-unit">jetons</div>
+      </div>
+    </div>
+    <button class="scan-btn" id="scanBtn">Scanner un tag</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="card" id="activeCard" style="display:none;">
+    <div class="card-row">
+      <span class="card-label">Tag actif</span>
+      <span class="serial" id="activeSerial"></span>
+    </div>
+    <div class="card-row" style="margin-bottom:0;">
+      <span class="card-label">Solde</span>
+      <span class="serial" id="activeBalance" style="color:var(--ivory); font-size:20px;"></span>
+    </div>
+
+    <div class="amount-row">
+      <input type="number" id="amountInput" placeholder="Montant" min="0" inputmode="decimal">
+      <button class="btn btn-credit" id="creditBtn">+ Créditer</button>
+      <button class="btn btn-debit" id="debitBtn">− Débiter</button>
+    </div>
+
+    <div class="label-edit">
+      <input type="text" id="labelInput" placeholder="Nom du tag (optionnel)">
+      <button class="btn btn-ghost" id="saveLabelBtn">Renommer</button>
+    </div>
+  </div>
+
+  <div class="ledger">
+    <h2>Tags connus</h2>
+    <div class="ledger-list" id="ledgerList">
+      <div class="empty">Aucun tag scanné pour l'instant.</div>
+    </div>
+  </div>
+
+  <footer>
+    <button class="reset-link" id="resetBtn">Réinitialiser toutes les données</button>
+  </footer>
+
+</div>
+
+<script>
+  const STORAGE_KEY = 'nfc_jetons_wallet_v1';
+  let currentSerial = null;
+  let ndefReader = null;
+
+  const $ = (id) => document.getElementById(id);
+  const medal = $('medal');
+  const statusEl = $('status');
+  const scanBtn = $('scanBtn');
+
+  function loadWallet(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    }catch(e){ return {}; }
+  }
+  function saveWallet(wallet){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(wallet));
+  }
+
+  function setStatus(msg, isErr){
+    statusEl.textContent = msg;
+    statusEl.classList.toggle('err', !!isErr);
+  }
+
+  function buildRimText(serial){
+    // Grave le numéro de série en cercle autour du médaillon, comme la tranche d'une pièce.
+    const text = ('• ' + serial + ' ').repeat(3);
+    return `
+      <svg viewBox="0 0 200 200">
+        <defs><path id="rimPath" d="M100,100 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0" /></defs>
+        <text><textPath href="#rimPath">${text}</textPath></text>
+      </svg>`;
+  }
+
+  function renderMedal(serial, balance){
+    $('medalRim').innerHTML = buildRimText(serial || '—');
+    $('medalBalance').textContent = balance !== null ? balance : '—';
+    medal.classList.remove('idle');
+    medal.classList.add('flip');
+    setTimeout(()=>{ medal.classList.remove('flip'); medal.classList.add('idle'); }, 700);
+  }
+
+  function renderActiveCard(serial, entry){
+    $('activeCard').style.display = 'block';
+    $('activeSerial').textContent = entry.label ? entry.label + ' · ' + serial : serial;
+    $('activeBalance').textContent = entry.balance + ' jetons';
+    $('labelInput').value = entry.label || '';
+  }
+
+  function renderLedger(){
+    const wallet = loadWallet();
+    const entries = Object.entries(wallet).sort((a,b)=> (b[1].lastSeen||'').localeCompare(a[1].lastSeen||''));
+    const list = $('ledgerList');
+    if(entries.length === 0){
+      list.innerHTML = '<div class="empty">Aucun tag scanné pour l\'instant.</div>';
+      return;
+    }
+    list.innerHTML = entries.map(([serial, e]) => `
+      <div class="ledger-item" data-serial="${serial}">
+        <div class="li-left">
+          <div class="li-name">${e.label ? e.label : 'Tag sans nom'}</div>
+          <div class="li-serial">${serial}</div>
+        </div>
+        <div class="li-balance">${e.balance}</div>
+      </div>
+    `).join('');
+    list.querySelectorAll('.ledger-item').forEach(el=>{
+      el.addEventListener('click', ()=> selectTag(el.dataset.serial));
+    });
+  }
+
+  function selectTag(serial){
+    const wallet = loadWallet();
+    if(!wallet[serial]) return;
+    currentSerial = serial;
+    renderMedal(serial, wallet[serial].balance);
+    renderActiveCard(serial, wallet[serial]);
+  }
+
+  function handleTag(serial){
+    const wallet = loadWallet();
+    if(!wallet[serial]){
+      wallet[serial] = { balance: 0, label:'', firstSeen: new Date().toISOString(), lastSeen: new Date().toISOString() };
+      setStatus('Nouveau tag enregistré : ' + serial);
+    } else {
+      wallet[serial].lastSeen = new Date().toISOString();
+      setStatus('Tag reconnu : ' + serial);
+    }
+    saveWallet(wallet);
+    currentSerial = serial;
+    renderMedal(serial, wallet[serial].balance);
+    renderActiveCard(serial, wallet[serial]);
+    renderLedger();
+  }
+
+  async function startScan(){
+    if(!('NDEFReader' in window)){
+      setStatus('Web NFC non disponible sur ce navigateur (utilisez Chrome pour Android, en HTTPS).', true);
+      return;
+    }
+    try{
+      ndefReader = new NDEFReader();
+      await ndefReader.scan();
+      scanBtn.classList.add('on');
+      scanBtn.textContent = 'En écoute…';
+      setStatus('Approchez un tag NFC.');
+      ndefReader.onreading = (event) => {
+        const serial = event.serialNumber || 'SANS-NUMERO-' + Date.now();
+        handleTag(serial);
+      };
+      ndefReader.onreadingerror = () => setStatus('Erreur de lecture du tag, réessayez.', true);
+    }catch(err){
+      setStatus('Permission refusée ou erreur : ' + err.message, true);
+      scanBtn.classList.remove('on');
+      scanBtn.textContent = 'Scanner un tag';
+    }
+  }
+
+  scanBtn.addEventListener('click', startScan);
+
+  $('creditBtn').addEventListener('click', ()=>{
+    const amt = parseFloat($('amountInput').value);
+    if(!currentSerial || isNaN(amt) || amt <= 0) return;
+    const wallet = loadWallet();
+    wallet[currentSerial].balance += amt;
+    saveWallet(wallet);
+    renderMedal(currentSerial, wallet[currentSerial].balance);
+    renderActiveCard(currentSerial, wallet[currentSerial]);
+    renderLedger();
+    $('amountInput').value = '';
+  });
+
+  $('debitBtn').addEventListener('click', ()=>{
+    const amt = parseFloat($('amountInput').value);
+    if(!currentSerial || isNaN(amt) || amt <= 0) return;
+    const wallet = loadWallet();
+    wallet[currentSerial].balance = Math.max(0, wallet[currentSerial].balance - amt);
+    saveWallet(wallet);
+    renderMedal(currentSerial, wallet[currentSerial].balance);
+    renderActiveCard(currentSerial, wallet[currentSerial]);
+    renderLedger();
+    $('amountInput').value = '';
+  });
+
+  $('saveLabelBtn').addEventListener('click', ()=>{
+    if(!currentSerial) return;
+    const wallet = loadWallet();
+    wallet[currentSerial].label = $('labelInput').value.trim();
+    saveWallet(wallet);
+    renderActiveCard(currentSerial, wallet[currentSerial]);
+    renderLedger();
+  });
+
+  $('resetBtn').addEventListener('click', ()=>{
+    if(confirm('Supprimer définitivement tous les tags et soldes enregistrés ?')){
+      localStorage.removeItem(STORAGE_KEY);
+      currentSerial = null;
+      $('activeCard').style.display = 'none';
+      renderMedal(null, null);
+      renderLedger();
+      setStatus('Données réinitialisées.');
+    }
+  });
+
+  // Init
+  renderLedger();
+  if(!('NDEFReader' in window)){
+    setStatus('Web NFC non disponible sur ce navigateur (utilisez Chrome pour Android, en HTTPS).', true);
+  }
+</script>
+</body>
+</html>
