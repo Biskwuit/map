@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Swipe between maps</title>
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+  </head>
+
+  <body>
+<div id="map" style="width: 100%; height: 500px"></div>
+<script>
+  const bounds = [
+    [2.75143, 50.277146],
+    [2.770792, 50.290118]
+  ];
+  const map = new maplibregl.Map({
+    style: {
+      version: 8,
+      sources: {},
+      layers: [
+        {
+          id: 'background',
+          type: 'background',
+          paint: {
+            'background-color': '#faebc0'
+          }
+        }
+      ]
+    },
+    center: [2.760277, 50.282966],
+    zoom: 16,
+    minZoom: 15.5,
+    maxBounds: bounds,
+    renderWorldCopies: false,
+    container: 'map',
+  });
+  map.on('load', () => {
+    map.addSource('single-tile', {
+      'type': 'image',
+      'url': 'https://assets.fragolabs.com/-KX4oX2w3mzFpFNAta-ap6fwLiXp9t9imnvgTi2nH_o/rs:fit:0:0:0/plain/upload/e3351a0b-fde5-4dea-88ad-d298e697e8b1.jpg',
+      'coordinates': [
+        [2.75593, 50.286918],
+        [2.766292, 50.286918],
+        [2.766292, 50.280346],
+        [2.75593, 50.280346]
+      ]
+    });
+    map.addLayer({
+      'id': 'single-tile-layer',
+      'type': 'raster',
+      'source': 'single-tile'
+    });
+  });
+</script>
+  </body>
+</html>
