@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEON PULSE - Info</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@800;900&amp;family=Hanken+Grotesk:wght@400&amp;family=Space+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#201f1f",
+                        "on-secondary-fixed-variant": "#7200a3",
+                        "on-tertiary-fixed": "#40000e",
+                        "tertiary-container": "#ffdadb",
+                        "surface-container-low": "#1c1b1b",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "surface": "#131313",
+                        "secondary-fixed": "#f6d9ff",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-tint": "#abd600",
+                        "secondary": "#e9b3ff",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-fixed": "#ffdadb",
+                        "on-secondary": "#510074",
+                        "outline-variant": "#444933",
+                        "primary": "#ffffff",
+                        "secondary-container": "#7d01b1",
+                        "on-surface-variant": "#c4c9ac",
+                        "error": "#ffb4ab",
+                        "background": "#131313",
+                        "error-container": "#93000a",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-fixed": "#161e00",
+                        "surface-variant": "#353534",
+                        "secondary-fixed-dim": "#e9b3ff",
+                        "surface-bright": "#3a3939",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-lowest": "#0e0e0e",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "on-error": "#690005",
+                        "on-tertiary": "#67001c",
+                        "on-primary": "#283500",
+                        "outline": "#8e9379",
+                        "primary-fixed": "#c3f400",
+                        "tertiary": "#ffffff",
+                        "on-primary-container": "#556d00",
+                        "primary-container": "#c3f400",
+                        "primary-fixed-dim": "#abd600",
+                        "on-tertiary-container": "#c9003f",
+                        "on-secondary-container": "#e5a9ff",
+                        "inverse-primary": "#506600",
+                        "on-secondary-fixed": "#310048",
+                        "surface-dim": "#131313",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "on-tertiary-fixed-variant": "#91002b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "20px",
+                        "margin-desktop": "48px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Anybody"],
+                        "label-sm": ["Space Mono"],
+                        "display-xl-mobile": ["Anybody"],
+                        "headline-lg-mobile": ["Anybody"],
+                        "display-xl": ["Anybody"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-xl-mobile": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "38px", "fontWeight": "800" }],
+                        "display-xl": ["80px", { "lineHeight": "88px", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glitch-hover:hover {
+            transform: translate(2px, 0);
+            box-shadow: -2px 0 0 theme('colors.secondary-fixed');
+            transition: all 0.1s ease;
+        }
+        .neon-glow {
+            filter: drop-shadow(0 0 15px rgba(195, 244, 0, 0.2));
+        }
+        .glass-panel {
+            background: rgba(32, 31, 31, 0.4);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="hidden md:flex flex-col bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-[0_0_15px_rgba(171,214,0,0.2)] fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-margin-desktop h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed dark:text-primary-fixed-dim hover:opacity-80 transition-opacity cursor-pointer">menu</span>
+<span class="font-headline-lg text-headline-lg font-black tracking-tighter text-primary-fixed dark:text-primary-fixed-dim">NEON PULSE</span>
+</div>
+<nav class="flex gap-8">
+<a class="flex items-center gap-2 text-on-surface-variant hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex items-center gap-2 text-on-surface-variant hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-sm text-label-sm">Lineup</span>
+</a>
+<a class="flex items-center gap-2 text-on-surface-variant hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-sm text-label-sm">Map</span>
+</a>
+<a class="flex items-center gap-2 text-on-surface-variant hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</a>
+<a class="flex items-center gap-2 text-primary-fixed font-bold hover:opacity-80 transition-opacity relative" href="#">
+<span class="material-symbols-outlined">info</span>
+<span class="font-label-sm text-label-sm">Info</span>
+<div class="absolute -bottom-2 left-0 w-full h-1 bg-primary-fixed"></div>
+</a>
+</nav>
+<span class="material-symbols-outlined text-primary-fixed dark:text-primary-fixed-dim hover:opacity-80 transition-opacity cursor-pointer">notifications</span>
+</div>
+</header>
+<!-- Mobile TopAppBar -->
+<header class="md:hidden flex justify-between items-center px-margin-mobile h-16 w-full bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-[0_0_15px_rgba(171,214,0,0.2)] fixed top-0 z-50">
+<span class="material-symbols-outlined text-primary-fixed dark:text-primary-fixed-dim active:scale-95 transition-transform cursor-pointer">menu</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-black tracking-tighter text-primary-fixed dark:text-primary-fixed-dim">NEON PULSE</span>
+<span class="material-symbols-outlined text-primary-fixed dark:text-primary-fixed-dim active:scale-95 transition-transform cursor-pointer">notifications</span>
+</header>
+<main class="flex-1 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-24 md:pt-32 pb-16 space-y-16">
+<!-- Hero Section -->
+<section class="relative rounded-xl overflow-hidden glass-panel p-8 md:p-16 flex flex-col items-start gap-6 border border-white/10 neon-glow">
+<h1 class="font-display-xl-mobile text-display-xl-mobile md:font-display-xl md:text-display-xl text-primary uppercase leading-tight">Essential<br/><span class="text-primary-fixed">Info</span></h1>
+<p class="font-body-md text-body-md text-on-surface max-w-2xl opacity-80">Everything you need to navigate NEON PULSE safely and smoothly. Keep this guide handy.</p>
+</section>
+<!-- Bento Grid Info Layout -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Getting Here -->
+<div class="md:col-span-8 glass-panel p-6 rounded-lg flex flex-col gap-6">
+<div class="flex items-center gap-3 border-b border-white/10 pb-4">
+<span class="material-symbols-outlined text-primary-fixed text-3xl">directions_car</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Getting Here</h2>
+</div>
+<div class="space-y-4">
+<p class="font-body-md text-body-md text-on-surface">The festival grounds are located at the Neon Valley Speedway. Public transit and dedicated shuttles are highly recommended.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded border border-white/5">
+<h3 class="font-label-sm text-label-sm text-secondary-fixed uppercase mb-2">Shuttles</h3>
+<p class="text-sm opacity-70">Running every 15 mins from Downtown Metro Station. Free with wristband.</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-white/5">
+<h3 class="font-label-sm text-label-sm text-secondary-fixed uppercase mb-2">Parking</h3>
+<p class="text-sm opacity-70">Limited on-site parking available. Pre-purchase required. No overnight parking.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Box Office -->
+<div class="md:col-span-4 glass-panel p-6 rounded-lg flex flex-col gap-6">
+<div class="flex items-center gap-3 border-b border-white/10 pb-4">
+<span class="material-symbols-outlined text-secondary-fixed text-3xl">local_activity</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Box Office</h2>
+</div>
+<ul class="space-y-3 font-label-sm text-label-sm">
+<li class="flex justify-between">
+<span class="text-on-surface-variant">Friday</span>
+<span>12:00 PM - 10:00 PM</span>
+</li>
+<li class="flex justify-between">
+<span class="text-on-surface-variant">Saturday</span>
+<span>10:00 AM - 10:00 PM</span>
+</li>
+<li class="flex justify-between">
+<span class="text-on-surface-variant">Sunday</span>
+<span>10:00 AM - 8:00 PM</span>
+</li>
+</ul>
+<button class="mt-auto bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm py-3 px-6 uppercase font-bold glitch-hover">Upgrade VIP</button>
+</div>
+<!-- Prohibited Items -->
+<div class="md:col-span-12 glass-panel p-6 rounded-lg">
+<div class="flex items-center gap-3 border-b border-white/10 pb-4 mb-6">
+<span class="material-symbols-outlined text-error text-3xl">do_not_disturb</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Prohibited Items</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-2"><span class="w-1 h-4 bg-error"></span> Outside Food/Drink</div>
+<div class="flex items-center gap-2"><span class="w-1 h-4 bg-error"></span> Professional Cameras</div>
+<div class="flex items-center gap-2"><span class="w-1 h-4 bg-error"></span> Drones</div>
+<div class="flex items-center gap-2"><span class="w-1 h-4 bg-error"></span> Illegal Substances</div>
+<div class="flex items-center gap-2"><span class="w-1 h-4 bg-error"></span> Large Backpacks</div>
+<div class="flex items-center gap-2"><span class="w-1 h-4 bg-error"></span> Laser Pointers</div>
+<div class="flex items-center gap-2"><span class="w-1 h-4 bg-error"></span> Fireworks</div>
+<div class="flex items-center gap-2"><span class="w-1 h-4 bg-error"></span> Pets (except service)</div>
+</div>
+</div>
+</section>
+<!-- FAQs Accordion -->
+<section class="max-w-3xl mx-auto w-full">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-8 text-center uppercase tracking-tighter">FAQ</h2>
+<div class="space-y-4">
+<details class="glass-panel rounded-lg group cursor-pointer" open="">
+<summary class="flex justify-between items-center p-4 font-label-sm text-label-sm uppercase hover:text-primary-fixed transition-colors">
+                        Is re-entry allowed?
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-on-surface opacity-80 border-t border-white/10 mt-2">
+                        No. Once your wristband is scanned for the day, you cannot leave and re-enter. VIP pass holders have a dedicated fast-lane, but the no re-entry rule applies to all tiers.
+                    </div>
+</details>
+<details class="glass-panel rounded-lg group cursor-pointer">
+<summary class="flex justify-between items-center p-4 font-label-sm text-label-sm uppercase hover:text-primary-fixed transition-colors">
+                        Are there payment options on site?
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-on-surface opacity-80 border-t border-white/10 mt-2">
+                        NEON PULSE is entirely cashless. All vendors accept major credit cards, Apple Pay, and Google Pay. You can also link your RFID wristband to a payment method at the Box Office.
+                    </div>
+</details>
+<details class="glass-panel rounded-lg group cursor-pointer">
+<summary class="flex justify-between items-center p-4 font-label-sm text-label-sm uppercase hover:text-primary-fixed transition-colors">
+                        What happens if it rains?
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-on-surface opacity-80 border-t border-white/10 mt-2">
+                        The festival is rain or shine. In the event of severe weather (lightning, extreme wind), stages may temporarily pause. Follow official social channels and app push notifications for live updates.
+                    </div>
+</details>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden flex justify-around items-center pt-2 pb-safe px-margin-mobile w-full bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.5)] fixed bottom-0 z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed/80 active:scale-90 transition-transform gap-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed/80 active:scale-90 transition-transform gap-1" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-sm text-label-sm">Lineup</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed/80 active:scale-90 transition-transform gap-1" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-sm text-label-sm">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed/80 active:scale-90 transition-transform gap-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed font-bold hover:text-primary-fixed/80 active:scale-90 transition-transform gap-1" href="#">
+<span class="material-symbols-outlined">info</span>
+<span class="font-label-sm text-label-sm">Info</span>
+</a>
+</nav>
+</body></html>
